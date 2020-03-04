@@ -1,0 +1,6 @@
+framework module Pods_MYouSeeEm {
+  umbrella header "Pods-MYouSeeEm-umbrella.h"
+
+  export *
+  module * { export * }
+}
