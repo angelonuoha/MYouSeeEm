@@ -30,10 +30,17 @@ class HomeSubcategoryCell: UICollectionViewCell {
             prepare()
         }
     }
-        
+    
+    func returnImage(category: String, subcategory: String) -> UIImage? {
+        let categoryName = category.lowercased().replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
+        let subcategoryName = subcategory.lowercased().replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
+        return UIImage(named: "\(categoryName).\(subcategoryName)")
+    }
+    
     func prepare() {
-        subcategoryTitleLabel.text = subcategory
         guard let category = category else { return }
-        //subcategoryImageView.image = subcategory.image(category: category) ?? category.image
+        guard let subcategory = subcategory else { return }
+        subcategoryTitleLabel.text = subcategory
+        subcategoryImageView.image = returnImage(category: category, subcategory: subcategory)
     }
 }

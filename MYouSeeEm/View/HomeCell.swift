@@ -88,12 +88,14 @@ extension HomeCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if isArtistSpotlight {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBusinessCell", for: indexPath) as! HomeBusinessCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeArtistCell", for: indexPath) as! HomeArtistCell
             cell.artist = artists[indexPath.row]
+            cell.category = category
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeSubcategoryCell", for: indexPath) as! HomeSubcategoryCell
             cell.subcategory = subcategories[indexPath.row]
+            cell.category = category
             return cell
         }
         

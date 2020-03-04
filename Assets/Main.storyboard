@@ -410,7 +410,7 @@
                                                                         <outlet property="subcategoryTitleLabel" destination="sCQ-or-BNh" id="UjA-cs-CHe"/>
                                                                     </connections>
                                                                 </collectionViewCell>
-                                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeBusinessCell" id="l8n-aT-AWo" customClass="HomeBusinessCell" customModule="MYouSeeEm" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeArtistCell" id="l8n-aT-AWo" customClass="HomeArtistCell" customModule="MYouSeeEm" customModuleProvider="target">
                                                                     <rect key="frame" x="165" y="0.0" width="130" height="130"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="v9M-JI-jvY">
@@ -487,7 +487,7 @@
                                                                     </collectionViewCellContentView>
                                                                     <size key="customSize" width="130" height="130"/>
                                                                     <connections>
-                                                                        <outlet property="shadowView" destination="Hpa-Ia-l5x" id="9OK-4c-jNB"/>
+                                                                        <outlet property="shadowView" destination="Hpa-Ia-l5x" id="UNh-tC-Uld"/>
                                                                         <outlet property="subcategoryImageView" destination="RT8-V7-heM" id="fHG-eA-Wcd"/>
                                                                         <outlet property="subcategoryTitleBackView" destination="zZ3-HS-Wcg" id="GcP-Yk-9c7"/>
                                                                         <outlet property="subcategoryTitleLabel" destination="9b0-68-oUJ" id="NF1-mL-8XI"/>

@@ -30,7 +30,7 @@
 		0BE46244240CD420005A7893 /* FCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46242240CD420005A7893 /* FCViewController.swift */; };
 		0BE4624B240CD623005A7893 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4624A240CD623005A7893 /* Main.storyboard */; };
 		0BE4624D240CDEDE005A7893 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4624C240CDEDE005A7893 /* MenuVC.swift */; };
-		1ACB05212410226300093AA0 /* HomeBusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05202410226300093AA0 /* HomeBusinessCell.swift */; };
+		1ACB05212410226300093AA0 /* HomeArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05202410226300093AA0 /* HomeArtistCell.swift */; };
 		8662C20BD93E16F690E43F0B /* Pods_MYouSeeEm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +81,7 @@
 		0BE46242240CD420005A7893 /* FCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCViewController.swift; sourceTree = "<group>"; };
 		0BE4624A240CD623005A7893 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0BE4624C240CDEDE005A7893 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
-		1ACB05202410226300093AA0 /* HomeBusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeBusinessCell.swift; path = "../../../../zuvy-ios/Zuvy/App/Scenes/Home/HomeBusinessCell.swift"; sourceTree = "<group>"; };
+		1ACB05202410226300093AA0 /* HomeArtistCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeArtistCell.swift; path = "../../../../zuvy-ios/Zuvy/App/Scenes/Home/HomeArtistCell.swift"; sourceTree = "<group>"; };
 		5F983AA56B471ADF0CA0FC29 /* Pods-MYouSeeEm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.release.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.release.xcconfig"; sourceTree = "<group>"; };
 		73FCB475416DB7320A6CDED3 /* Pods-MYouSeeEm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.debug.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYouSeeEm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,7 +225,7 @@
 			children = (
 				0BE46225240CC579005A7893 /* HomeVC.swift */,
 				0BE46227240CC5F5005A7893 /* HomeCell.swift */,
-				1ACB05202410226300093AA0 /* HomeBusinessCell.swift */,
+				1ACB05202410226300093AA0 /* HomeArtistCell.swift */,
 				0B4917D8240F02CA0046A505 /* HomeSubcategoryCell.swift */,
 			);
 			path = Home;
@@ -466,7 +466,7 @@
 				0B4917D1240EE66C0046A505 /* CALayer+Shadow.swift in Sources */,
 				0B4917D5240EE9420046A505 /* UIColor+hex.swift in Sources */,
 				0B4917CB240E06340046A505 /* HomeCategoryVC.swift in Sources */,
-				1ACB05212410226300093AA0 /* HomeBusinessCell.swift in Sources */,
+				1ACB05212410226300093AA0 /* HomeArtistCell.swift in Sources */,
 				0BE4622D240CD07E005A7893 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
