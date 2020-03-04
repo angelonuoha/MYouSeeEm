@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 struct DatabaseCategories: Codable {
     let exhibits: Exhibits
     let learnYourHistory: LearnYourHistory
@@ -76,7 +76,7 @@ struct SpecialExhibits: Codable {
     }
 }
     
-    
+    */
 
 
 
