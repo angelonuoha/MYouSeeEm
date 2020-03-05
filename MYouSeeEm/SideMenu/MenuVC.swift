@@ -11,8 +11,9 @@ import UIKit
 import FirebaseUI
 
 protocol ProfileMenuDelegate {
-    func showSettings()
-    func showPayment()
+    func showAboutUs()
+    func showEvents()
+    func showMuseumsToVisit()
     func contactUs()
     func signOut()
     func loadProfile() -> User?
@@ -22,16 +23,13 @@ class MenuVC: UIViewController {
     
     @IBOutlet weak var profileImageView: RoundImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var profileSettingsButton: UIButton!
-    @IBOutlet weak var paymentSettingsButton: UIButton!
-    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var aboutUs: UIButton!
+    @IBOutlet weak var events: UIButton!
+    @IBOutlet weak var signOut: UIButton!
+    
     
     var delegate: ProfileMenuDelegate?
-    var profile: User? {
-        didSet {
-            prepare()
-        }
-    }
+    var profile: User?
     
     static func instantiate() -> MenuVC {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -40,6 +38,7 @@ class MenuVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepare()
         /*
         APISharedService.shared.userSession.currentProfile.bind { [weak self] userModel in
             self?.profile = userModel
@@ -50,22 +49,27 @@ class MenuVC: UIViewController {
     
     func prepare() {
         guard let profile = self.delegate?.loadProfile() else { return }
+        print(profile)
         usernameLabel.text = profile.displayName
         //profileImageView.loadProfileImage(userId: profile.id)
     }
     
-    @IBAction func openProfileSettings(_ sender: Any) {
-        delegate?.showSettings()
-        dismiss(animated: true, completion: nil)
-
-    }
-    
-    @IBAction func openPaymentSettings(_ sender: Any) {
-        delegate?.showPayment()
+    @IBAction func showAboutUs(_ sender: Any) {
+        delegate?.showAboutUs()
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func openContactUs(_ sender: Any) {
+    @IBAction func showEvents(_ sender: Any) {
+        delegate?.showEvents()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showMuseums(_ sender: Any) {
+        delegate?.showMuseumsToVisit()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func contactUs(_ sender: Any) {
         delegate?.contactUs()
         dismiss(animated: true, completion: nil)
     }
@@ -74,5 +78,6 @@ class MenuVC: UIViewController {
         delegate?.signOut()
         dismiss(animated: true, completion: nil)
     }
+    
  
 }

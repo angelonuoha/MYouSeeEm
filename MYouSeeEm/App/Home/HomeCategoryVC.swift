@@ -1,5 +1,5 @@
 //
-//  HomeResultsVC.swift
+//  HomeCategoryVC.swift
 //  MYouSeeEm
 //
 //  Created by Angel Onuoha on 3/5/20.

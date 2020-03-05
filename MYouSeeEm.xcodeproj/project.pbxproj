@@ -39,6 +39,10 @@
 		1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */; };
 		1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB0526241103B800093AA0 /* MuseumModel.swift */; };
 		1ACB052924110AE300093AA0 /* HomeResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052824110AE300093AA0 /* HomeResultsVC.swift */; };
+		1ACB052C24117C4300093AA0 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052B24117C4300093AA0 /* AboutUsVC.swift */; };
+		1ACB052E24117C5400093AA0 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052D24117C5400093AA0 /* EventsVC.swift */; };
+		1ACB053024117C9200093AA0 /* MuseumsToVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052F24117C9200093AA0 /* MuseumsToVisit.swift */; };
+		1ACB05322411812800093AA0 /* MuseumsToVisitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05312411812800093AA0 /* MuseumsToVisitViewCell.swift */; };
 		8662C20BD93E16F690E43F0B /* Pods_MYouSeeEm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +102,10 @@
 		1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumTableViewCell.swift; sourceTree = "<group>"; };
 		1ACB0526241103B800093AA0 /* MuseumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumModel.swift; sourceTree = "<group>"; };
 		1ACB052824110AE300093AA0 /* HomeResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResultsVC.swift; sourceTree = "<group>"; };
+		1ACB052B24117C4300093AA0 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		1ACB052D24117C5400093AA0 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		1ACB052F24117C9200093AA0 /* MuseumsToVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumsToVisit.swift; sourceTree = "<group>"; };
+		1ACB05312411812800093AA0 /* MuseumsToVisitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumsToVisitViewCell.swift; sourceTree = "<group>"; };
 		5F983AA56B471ADF0CA0FC29 /* Pods-MYouSeeEm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.release.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.release.xcconfig"; sourceTree = "<group>"; };
 		73FCB475416DB7320A6CDED3 /* Pods-MYouSeeEm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.debug.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYouSeeEm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACB051C241020E900093AA0 /* App */,
+				1ACB052A24117C1C00093AA0 /* SideMenu */,
 				0BE461F1240C8566005A7893 /* AppDelegate.swift */,
 				0BE46242240CD420005A7893 /* FCViewController.swift */,
 				0BE461F3240C8566005A7893 /* SceneDelegate.swift */,
@@ -234,7 +243,6 @@
 				1ACB051D2410211A00093AA0 /* Onboarding */,
 				1ACB051E2410212400093AA0 /* Home */,
 				0B4917E6241079820046A505 /* Artist Spotlight */,
-				1ACB051F2410214D00093AA0 /* Museum */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -253,7 +261,6 @@
 				0BE46225240CC579005A7893 /* HomeVC.swift */,
 				0BE46227240CC5F5005A7893 /* HomeCell.swift */,
 				0B4917D8240F02CA0046A505 /* HomeSubcategoryCell.swift */,
-				0BE4624C240CDEDE005A7893 /* MenuVC.swift */,
 				0B4917E4241073DC0046A505 /* HomeArtistCell.swift */,
 				0B4917CA240E06340046A505 /* HomeCategoryVC.swift */,
 				0BE46235240CD130005A7893 /* CategoryViewCell.swift */,
@@ -262,13 +269,26 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		1ACB051F2410214D00093AA0 /* Museum */ = {
+		1ACB051F2410214D00093AA0 /* Museum To Visit */ = {
 			isa = PBXGroup;
 			children = (
+				1ACB052F24117C9200093AA0 /* MuseumsToVisit.swift */,
 				1ACB05222411001900093AA0 /* MuseumVC.swift */,
 				1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */,
+				1ACB05312411812800093AA0 /* MuseumsToVisitViewCell.swift */,
 			);
-			path = Museum;
+			path = "Museum To Visit";
+			sourceTree = "<group>";
+		};
+		1ACB052A24117C1C00093AA0 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0BE4624C240CDEDE005A7893 /* MenuVC.swift */,
+				1ACB052B24117C4300093AA0 /* AboutUsVC.swift */,
+				1ACB052D24117C5400093AA0 /* EventsVC.swift */,
+				1ACB051F2410214D00093AA0 /* Museum To Visit */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		4F8EE0E3043A9A79DCB99C5A /* Frameworks */ = {
@@ -487,11 +507,13 @@
 				0BE46226240CC579005A7893 /* HomeVC.swift in Sources */,
 				0B4917E5241073DC0046A505 /* HomeArtistCell.swift in Sources */,
 				1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */,
+				1ACB053024117C9200093AA0 /* MuseumsToVisit.swift in Sources */,
 				0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */,
 				1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */,
 				0B4917EC2410B05C0046A505 /* SubcategoryModel.swift in Sources */,
 				1ACB052924110AE300093AA0 /* HomeResultsVC.swift in Sources */,
 				0BE461F2240C8566005A7893 /* AppDelegate.swift in Sources */,
+				1ACB05322411812800093AA0 /* MuseumsToVisitViewCell.swift in Sources */,
 				0B4917EE2410C5B00046A505 /* CategoryModel.swift in Sources */,
 				0BE4624D240CDEDE005A7893 /* MenuVC.swift in Sources */,
 				0B4917BC240E028C0046A505 /* RoundImageView.swift in Sources */,
@@ -504,10 +526,12 @@
 				0B4917D9240F02CB0046A505 /* HomeSubcategoryCell.swift in Sources */,
 				0B4917B9240E028C0046A505 /* NavActionView.swift in Sources */,
 				0B4917D1240EE66C0046A505 /* CALayer+Shadow.swift in Sources */,
+				1ACB052C24117C4300093AA0 /* AboutUsVC.swift in Sources */,
 				0B4917D5240EE9420046A505 /* UIColor+hex.swift in Sources */,
 				0B4917CB240E06340046A505 /* HomeCategoryVC.swift in Sources */,
 				0BE4622D240CD07E005A7893 /* Constants.swift in Sources */,
 				1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */,
+				1ACB052E24117C5400093AA0 /* EventsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

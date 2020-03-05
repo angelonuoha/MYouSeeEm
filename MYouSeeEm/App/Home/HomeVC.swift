@@ -11,6 +11,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import LMCSideMenu
+import MessageUI
 
 class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     var interactor: MenuTransitionInteractor = MenuTransitionInteractor()
@@ -76,7 +77,7 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
                 let keys = rest.key
                 if keys == "Artist Spotlight" {
                     self.artistSpotlight.append(keys)
-                } else {
+                } else if keys != "Museums to Visit" {
                     self.categories.append(keys)
                 }
             }
@@ -168,19 +169,60 @@ extension HomeVC: ProfileMenuDelegate {
     func loadProfile() -> User? {
         return profile
     }
+    
+    func showAboutUs() {
+        performSegue(withIdentifier: "ShowAboutUs", sender: nil)
+    }
+    
+    func showEvents() {
+        performSegue(withIdentifier: "ShowEvents", sender: nil)
+    }
+    
+    func showMuseumsToVisit() {
+        performSegue(withIdentifier: "ShowMuseumsToVisit", sender: nil)
+    }
+    
     func contactUs() {
-        //<#code#>
-    }
-    
-    func showSettings() {
-        performSegue(withIdentifier: "ShowSettings", sender: nil)
-    }
-    
-    func showPayment() {
-        performSegue(withIdentifier: "ShowCards", sender: nil)
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+            self.composeEmail()
+        }
     }
     
     func signOut() {
         
+    }
+    
+}
+extension HomeVC: MFMailComposeViewControllerDelegate {
+
+    func composeEmail() {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            showInfo("Could not send e-mail", title: "Error")
+        }
+    }
+    
+    func showInfo(_ message: String, title: String? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients(["MYouSeeEm@gmail.com"])
+        mailComposerVC.setSubject("[SUPPORT] MYouSeeEm")
+        mailComposerVC.setMessageBody("", isHTML: false) // set to text
+
+        return mailComposerVC
+    }
+
+    // MARK: MFMailComposeViewControllerDelegate
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

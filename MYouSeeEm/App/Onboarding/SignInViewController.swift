@@ -55,7 +55,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     }
     
     func configureAuth() {
-        print("configuring auth")
         let authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         let providers: [FUIAuthProvider] = [FUIEmailAuth()]
@@ -80,7 +79,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     func signedInStatus(isSignedIn: Bool) {
         if isSignedIn {
             if self.signInButton.isHidden && self.googleSignIn.isHidden {
-                performSegue(withIdentifier: "LoggedIn", sender: nil)
+                performSegue(withIdentifier: "LoggedIn", sender: user)
             }
             activityIndicator.stopAnimating()
             configureDatabase()
@@ -99,7 +98,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         print("signed in")
-        performSegue(withIdentifier: "LoggedIn", sender: nil)
+        performSegue(withIdentifier: "LoggedIn", sender: user)
     }
     
     
@@ -110,8 +109,9 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? HomeVC {
-            vc.profile = user
+        let destinationNavigationController = segue.destination as! UINavigationController
+        if let vc = destinationNavigationController.topViewController as? HomeVC {
+            vc.profile = sender as? User
         }
     }
     
