@@ -15,4 +15,6 @@ struct SubcategoryModel {
     let date: String
     let additionalInfo: String
     let category: String
+    let subcategory: String
+    let photoId: String
 }

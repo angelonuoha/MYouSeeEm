@@ -1,9 +1,9 @@
 //
-//  HomeSubcategoryCell.swift
-//  Zuvy
+//  HomeResultsVC.swift
+//  MYouSeeEm
 //
-//  Created by Vladimir Fedorov on 22.12.2019.
-//  Copyright © 2019 Zuvy. All rights reserved.
+//  Created by Angel Onuoha on 3/5/20.
+//  Copyright © 2020 MYouSeeEm. All rights reserved.
 //
 
 import UIKit

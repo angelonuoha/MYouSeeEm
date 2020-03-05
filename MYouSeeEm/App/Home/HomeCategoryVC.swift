@@ -1,9 +1,9 @@
 //
-//  HomeCategoryVC.swift
-//  Zuvy
+//  HomeResultsVC.swift
+//  MYouSeeEm
 //
-//  Created by Vladimir Fedorov on 14.12.2019.
-//  Copyright © 2019 Zuvy. All rights reserved.
+//  Created by Angel Onuoha on 3/5/20.
+//  Copyright © 2020 MYouSeeEm. All rights reserved.
 //
 
 import UIKit
@@ -21,6 +21,12 @@ class HomeCategoryVC: UIViewController {
     func prepare() {
         if let subcategory = subcategory {
             self.title = "\(subcategory.category)"
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? HomeResultsVC {
+            vc.subcategoryDetail = sender as? SubcategoryModel
         }
     }
     
@@ -43,12 +49,15 @@ extension HomeCategoryVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /*
-            if let author = subcategory.[Constants.subcategory.author], let instagram = subcategoryData[Constants.subcategory.instagram], let description = subcategoryData[Constants.subcategory.description], let date = subcategoryData[Constants.subcategory.date], let additionalInfo = subcategoryData[Constants.subcategory.additionalInfo] {
-                let subcategory = SubcategoryModel(author: author, instagram: instagram, description: description, date: date, additionalInfo: additionalInfo, category: selectedCategory)
-                self.delegate?.showSubcategories(subcategory: subcategory)
+        if let subcategory = subcategory {
+            let selectedSubcategory = subcategory.names[indexPath.row]
+            let index = subcategory.categoryData.index(forKey: selectedSubcategory)
+            let subcategoryData = subcategory.categoryData[index!].value
+            if let author = subcategoryData[Constants.subcategoryData.author], let instagram = subcategoryData[Constants.subcategoryData.instagram], let description = subcategoryData[Constants.subcategoryData.description], let date = subcategoryData[Constants.subcategoryData.date], let additionalInfo = subcategoryData[Constants.subcategoryData.additionalInfo] {
+                let subcategoryDetail = SubcategoryModel(author: author, instagram: instagram, description: description, date: date, additionalInfo: additionalInfo, category: subcategory.superCategory, subcategory: subcategory.category, photoId: selectedSubcategory)
+                performSegue(withIdentifier: "ShowSubcategoryDetail", sender: subcategoryDetail)
             }
-        }*/
+        }
     }
 }
 

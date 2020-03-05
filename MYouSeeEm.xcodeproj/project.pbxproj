@@ -38,6 +38,7 @@
 		1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05222411001900093AA0 /* MuseumVC.swift */; };
 		1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */; };
 		1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB0526241103B800093AA0 /* MuseumModel.swift */; };
+		1ACB052924110AE300093AA0 /* HomeResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052824110AE300093AA0 /* HomeResultsVC.swift */; };
 		8662C20BD93E16F690E43F0B /* Pods_MYouSeeEm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		1ACB05222411001900093AA0 /* MuseumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumVC.swift; sourceTree = "<group>"; };
 		1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumTableViewCell.swift; sourceTree = "<group>"; };
 		1ACB0526241103B800093AA0 /* MuseumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumModel.swift; sourceTree = "<group>"; };
+		1ACB052824110AE300093AA0 /* HomeResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResultsVC.swift; sourceTree = "<group>"; };
 		5F983AA56B471ADF0CA0FC29 /* Pods-MYouSeeEm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.release.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.release.xcconfig"; sourceTree = "<group>"; };
 		73FCB475416DB7320A6CDED3 /* Pods-MYouSeeEm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.debug.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYouSeeEm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 				0B4917E4241073DC0046A505 /* HomeArtistCell.swift */,
 				0B4917CA240E06340046A505 /* HomeCategoryVC.swift */,
 				0BE46235240CD130005A7893 /* CategoryViewCell.swift */,
+				1ACB052824110AE300093AA0 /* HomeResultsVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */,
 				1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */,
 				0B4917EC2410B05C0046A505 /* SubcategoryModel.swift in Sources */,
+				1ACB052924110AE300093AA0 /* HomeResultsVC.swift in Sources */,
 				0BE461F2240C8566005A7893 /* AppDelegate.swift in Sources */,
 				0B4917EE2410C5B00046A505 /* CategoryModel.swift in Sources */,
 				0BE4624D240CDEDE005A7893 /* MenuVC.swift in Sources */,
