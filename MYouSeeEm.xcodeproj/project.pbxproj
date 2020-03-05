@@ -226,7 +226,6 @@
 				1ACB051D2410211A00093AA0 /* Onboarding */,
 				1ACB051E2410212400093AA0 /* Home */,
 				1ACB051F2410214D00093AA0 /* Museum */,
-				0BE4624C240CDEDE005A7893 /* MenuVC.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -245,6 +244,7 @@
 				0BE46225240CC579005A7893 /* HomeVC.swift */,
 				0BE46227240CC5F5005A7893 /* HomeCell.swift */,
 				0B4917D8240F02CA0046A505 /* HomeSubcategoryCell.swift */,
+				0BE4624C240CDEDE005A7893 /* MenuVC.swift */,
 				0B4917E4241073DC0046A505 /* HomeArtistCell.swift */,
 			);
 			path = Home;

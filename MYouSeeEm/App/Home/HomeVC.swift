@@ -10,16 +10,17 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import LMCSideMenu
 
-
-
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
+    var interactor: MenuTransitionInteractor = MenuTransitionInteractor()
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var categoriesTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var dataSnapshot: [DataSnapshot]! = []
     
@@ -43,14 +44,26 @@ class HomeVC: UIViewController {
         }
     }
     
+    var profile: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-    
+        prepareMenu()
+        let logo = UIImage(named: "MYouSeeEmLogo.png")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    func prepareMenu() {
+        
+        let menuVC = MenuVC.instantiate()
+        menuVC.delegate = self
+        setupMenu(leftMenu: menuVC, rightMenu: nil)
     }
     
     
@@ -85,6 +98,9 @@ class HomeVC: UIViewController {
         }
     }
     
+    @IBAction func showMenu(_ sender: Any) {
+        presentLeftMenu()
+    }
     
     
     func loadData() {
@@ -139,5 +155,27 @@ extension HomeVC: HomeCellDelegate {
     }
     func showSubcategories(subcategory: CategoryModel) {
         performSegue(withIdentifier: "ShowSubcategories", sender: subcategory)
+    }
+}
+
+extension HomeVC: ProfileMenuDelegate {
+    
+    func loadProfile() -> User? {
+        return profile
+    }
+    func contactUs() {
+        //<#code#>
+    }
+    
+    func showSettings() {
+        performSegue(withIdentifier: "ShowSettings", sender: nil)
+    }
+    
+    func showPayment() {
+        performSegue(withIdentifier: "ShowCards", sender: nil)
+    }
+    
+    func signOut() {
+        
     }
 }

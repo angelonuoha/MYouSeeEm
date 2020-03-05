@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23E7C4A52360C026F97E4A96D91B03CE"
-               BuildableName = "FirebaseStorage.framework"
-               BlueprintName = "FirebaseStorage"
+               BlueprintIdentifier = "11A9BF102A6697991FA735776F6E4B3C"
+               BuildableName = "LMCSideMenu.framework"
+               BlueprintName = "LMCSideMenu"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -261,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtB-Ja-rgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-278" y="1100"/>
+            <point key="canvasLocation" x="29" y="842"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="jch-2g-pHJ">
@@ -540,15 +540,18 @@
                         <viewLayoutGuide key="safeArea" id="z5u-JB-x7P"/>
                     </view>
                     <navigationItem key="navigationItem" id="7ef-NM-2OX">
-                        <nil key="title"/>
-                        <barButtonItem key="backBarButtonItem" title=" " id="sjf-Cw-7vn"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="reP-hG-Vsi"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="reP-hG-Vsi">
+                            <connections>
+                                <action selector="showMenu:" destination="uu0-et-N0m" id="nWX-sw-bWg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="OTU-gH-Rtk" id="igo-HA-Bjk"/>
                         <outlet property="categoriesTableView" destination="J8b-EX-5uE" id="ALl-EM-eAH"/>
                         <outlet property="contentView" destination="3NL-ny-8zI" id="svN-6A-479"/>
                         <outlet property="loadingView" destination="oO7-Hi-iqX" id="mcx-N8-EW2"/>
+                        <outlet property="menuButton" destination="reP-hG-Vsi" id="BsY-uo-Vcr"/>
                         <outlet property="tableView" destination="J8b-EX-5uE" id="bSS-5y-q32"/>
                         <segue destination="BGv-rK-R2D" kind="show" identifier="ShowArtist" id="eh5-QU-uxp"/>
                         <segue destination="PaG-zn-C7u" kind="show" identifier="ShowSubcategories" id="euZ-ZP-Rcz"/>

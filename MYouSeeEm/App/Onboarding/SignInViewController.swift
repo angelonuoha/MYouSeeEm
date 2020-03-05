@@ -24,8 +24,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     var user: User?
     
-    
-    
     fileprivate func setupSignInButton() {
         signInButton.layer.cornerRadius = 3.0
         signInButton.layer.shadowColor = UIColor.black.cgColor
@@ -109,6 +107,12 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         // Firebase
         self.signedInStatus(isSignedIn: false)
         self.loginSession()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? HomeVC {
+            vc.profile = user
+        }
     }
     
 }

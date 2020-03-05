@@ -6,6 +6,7 @@ target 'MYouSeeEm' do
   pod 'Firebase/Database'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Email'
+  pod 'LMCSideMenu'
 
 
 end

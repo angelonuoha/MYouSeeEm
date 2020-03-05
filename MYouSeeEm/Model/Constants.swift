@@ -15,10 +15,6 @@ struct Constants {
         static let additionalInfo = "additionalInfo"
     }
     
-    struct subcategory {
-        let data: subcategoryData
-    }
-    
     struct subcategoryData {
         static let author = "author"
         static let instagram = "instagram"

@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import FirebaseUI
 
 protocol ProfileMenuDelegate {
     func showSettings()
     func showPayment()
     func contactUs()
     func signOut()
+    func loadProfile() -> User?
 }
 
 class MenuVC: UIViewController {
@@ -23,30 +25,33 @@ class MenuVC: UIViewController {
     @IBOutlet weak var profileSettingsButton: UIButton!
     @IBOutlet weak var paymentSettingsButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
-    /*
+    
     var delegate: ProfileMenuDelegate?
-    var profile: APIUserModel? {
+    var profile: User? {
         didSet {
             prepare()
         }
     }
     
     static func instantiate() -> MenuVC {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        /*
         APISharedService.shared.userSession.currentProfile.bind { [weak self] userModel in
             self?.profile = userModel
         }
         .disposed(by: disposeBag)
+ */
     }
     
     func prepare() {
-        guard let profile = profile else { return }
-        usernameLabel.text = profile.fullName
-        profileImageView.loadProfileImage(userId: profile.id)
+        guard let profile = self.delegate?.loadProfile() else { return }
+        usernameLabel.text = profile.displayName
+        //profileImageView.loadProfileImage(userId: profile.id)
     }
     
     @IBAction func openProfileSettings(_ sender: Any) {
@@ -69,5 +74,5 @@ class MenuVC: UIViewController {
         delegate?.signOut()
         dismiss(animated: true, completion: nil)
     }
- */
+ 
 }
