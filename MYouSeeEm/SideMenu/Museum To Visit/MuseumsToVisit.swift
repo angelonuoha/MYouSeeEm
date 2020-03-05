@@ -17,6 +17,7 @@ class MuseumsToVisit: UIViewController {
         super.viewDidLoad()
         downloadMuseumsFromFirebase()
         museumTextView.isScrollEnabled = false
+        museumTextView.isEditable = false
     }
     
     var data: [Any]!

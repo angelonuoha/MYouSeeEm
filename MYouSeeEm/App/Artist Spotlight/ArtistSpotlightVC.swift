@@ -22,6 +22,8 @@ class ArtistSpotlightVC: UIViewController {
             artistDescription?.text = artist.description
             songLabel?.text = "Checkout their song in the MYouSeeEm Playlist: \(artist.song)"
             artistDescription.isScrollEnabled = false
+            artistDescription.isEditable = false
+            
         }
     }
     

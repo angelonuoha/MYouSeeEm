@@ -43,6 +43,8 @@
 		1ACB052E24117C5400093AA0 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052D24117C5400093AA0 /* EventsVC.swift */; };
 		1ACB053024117C9200093AA0 /* MuseumsToVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB052F24117C9200093AA0 /* MuseumsToVisit.swift */; };
 		1ACB05322411812800093AA0 /* MuseumsToVisitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05312411812800093AA0 /* MuseumsToVisitViewCell.swift */; };
+		1ACB05342411984A00093AA0 /* HomeCommentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05332411984A00093AA0 /* HomeCommentsViewCell.swift */; };
+		1ACB05362411A69300093AA0 /* UIScrollView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05352411A69300093AA0 /* UIScrollView+Utils.swift */; };
 		8662C20BD93E16F690E43F0B /* Pods_MYouSeeEm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,8 @@
 		1ACB052D24117C5400093AA0 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
 		1ACB052F24117C9200093AA0 /* MuseumsToVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumsToVisit.swift; sourceTree = "<group>"; };
 		1ACB05312411812800093AA0 /* MuseumsToVisitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumsToVisitViewCell.swift; sourceTree = "<group>"; };
+		1ACB05332411984A00093AA0 /* HomeCommentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentsViewCell.swift; sourceTree = "<group>"; };
+		1ACB05352411A69300093AA0 /* UIScrollView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utils.swift"; sourceTree = "<group>"; };
 		5F983AA56B471ADF0CA0FC29 /* Pods-MYouSeeEm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.release.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.release.xcconfig"; sourceTree = "<group>"; };
 		73FCB475416DB7320A6CDED3 /* Pods-MYouSeeEm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.debug.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYouSeeEm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +150,7 @@
 				0B4917B0240E028B0046A505 /* ShadowCellView.swift */,
 				0B4917D0240EE66C0046A505 /* CALayer+Shadow.swift */,
 				0B4917D4240EE9420046A505 /* UIColor+hex.swift */,
+				1ACB05352411A69300093AA0 /* UIScrollView+Utils.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				0B4917CA240E06340046A505 /* HomeCategoryVC.swift */,
 				0BE46235240CD130005A7893 /* CategoryViewCell.swift */,
 				1ACB052824110AE300093AA0 /* HomeResultsVC.swift */,
+				1ACB05332411984A00093AA0 /* HomeCommentsViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -518,12 +524,14 @@
 				0BE4624D240CDEDE005A7893 /* MenuVC.swift in Sources */,
 				0B4917BC240E028C0046A505 /* RoundImageView.swift in Sources */,
 				0BE461F4240C8566005A7893 /* SceneDelegate.swift in Sources */,
+				1ACB05342411984A00093AA0 /* HomeCommentsViewCell.swift in Sources */,
 				0BE46244240CD420005A7893 /* FCViewController.swift in Sources */,
 				0B4917BE240E028C0046A505 /* ShadowCellView.swift in Sources */,
 				0BE46228240CC5F5005A7893 /* HomeCell.swift in Sources */,
 				0B4917EA241089A10046A505 /* ArtistModel.swift in Sources */,
 				0BE46236240CD130005A7893 /* CategoryViewCell.swift in Sources */,
 				0B4917D9240F02CB0046A505 /* HomeSubcategoryCell.swift in Sources */,
+				1ACB05362411A69300093AA0 /* UIScrollView+Utils.swift in Sources */,
 				0B4917B9240E028C0046A505 /* NavActionView.swift in Sources */,
 				0B4917D1240EE66C0046A505 /* CALayer+Shadow.swift in Sources */,
 				1ACB052C24117C4300093AA0 /* AboutUsVC.swift in Sources */,
