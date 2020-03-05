@@ -9,31 +9,38 @@
 import UIKit
 
 class HomeCategoryVC: UIViewController {
-
-    @IBOutlet weak var topView: NavActionView!
-    @IBOutlet weak var searchTitleLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var subcategoryCollectionView: UICollectionView!
     
-    var category: String?
+    var subcategory: CategoryModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @IBAction func back(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
     }
 
 }
 
 extension HomeCategoryVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return subcategory?.names.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryViewCell", for: indexPath) as! CategoryViewCell
+        if let subcategory = subcategory {
+            cell.subcategory = subcategory.category
+            cell.photoId = subcategory.names[indexPath.row]
+            cell.category = subcategory.superCategory
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /*
+            if let author = subcategory.[Constants.subcategory.author], let instagram = subcategoryData[Constants.subcategory.instagram], let description = subcategoryData[Constants.subcategory.description], let date = subcategoryData[Constants.subcategory.date], let additionalInfo = subcategoryData[Constants.subcategory.additionalInfo] {
+                let subcategory = SubcategoryModel(author: author, instagram: instagram, description: description, date: date, additionalInfo: additionalInfo, category: selectedCategory)
+                self.delegate?.showSubcategories(subcategory: subcategory)
+            }
+        }*/
     }
 }
 

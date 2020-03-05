@@ -7,78 +7,23 @@
 //
 
 import Foundation
-/*
-struct DatabaseCategories: Codable {
-    let exhibits: Exhibits
-    let learnYourHistory: LearnYourHistory
-    let museumsToVisit: MusuemsToVisit
-    let specialExhibits: SpecialExhibits
+
+struct Constants {
+    struct artistSpotlight {
+        static let song = "song"
+        static let description = "description"
+        static let additionalInfo = "additionalInfo"
+    }
     
-    enum CodingKeys: String, CodingKey {
-        case exhibits = "Exhibitions"
-        case learnYourHistory = "Learn The History"
-        case museumsToVisit = "Museums to Visit"
-        case specialExhibits = "Special Exhibitions"
+    struct subcategory {
+        let data: subcategoryData
+    }
+    
+    struct subcategoryData {
+        static let author = "author"
+        static let instagram = "instagram"
+        static let description = "description"
+        static let date = "date"
+        static let additionalInfo = "additionalInfo"
     }
 }
-
-struct Exhibits: Codable {
-    let afroFuturism: [String]
-    let contemporary: [String]
-    let fashion: [String]
-    let photography: [String]
-        
-    enum CodingKeys: String, CodingKey {
-        case afroFuturism = "Afro-Futurism"
-        case contemporary = "Contemporary"
-        case fashion = "Fashion"
-        case photography = "Photography"
-    }
-}
-    
-struct LearnYourHistory: Codable {
-    let asia: [String]
-    let oceania: [String]
-    let southAmerica: [String]
-    let carribean: [String]
-    let slaveRebellions: [String]
-    
-    enum CodingKeys: String, CodingKey {
-        case asia = "Asia"
-        case oceania = "Oceania"
-        case southAmerica = "South America"
-        case carribean = "Carribean"
-        case slaveRebellions = "Slave Rebellions"
-    }
-}
-
-struct MusuemsToVisit: Codable {
-    let northAmerica: [String]
-    let africa: [String]
-    let europe: [String]
-    let asia: [String]
-    
-    enum CodingKeys: String, CodingKey {
-        case northAmerica = "North America"
-        case africa = "Africa"
-            case europe = "Europe"
-            case asia = "Asia"
-        }
-    }
-    
-struct SpecialExhibits: Codable {
-    let afroIranians: [String]
-    let rethinkingBritishHistory: [String]
-        
-    enum CodingKeys: String, CodingKey {
-        case afroIranians = "Afro-Iranians"
-        case rethinkingBritishHistory = "Rethinking British History"
-    }
-}
-    
-    */
-
-
-
-
-

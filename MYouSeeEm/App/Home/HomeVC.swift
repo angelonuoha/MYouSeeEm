@@ -12,6 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 
+
 class HomeVC: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
@@ -53,22 +54,8 @@ class HomeVC: UIViewController {
     }
     
     
-    /*
-    let messageSnapshot = messages[indexPath.row]
-    let message = messageSnapshot.value as! [String: String]
-    let name = message[Constants.MessageFields.name] ?? "[username]"
-    // if image message, then grab image and display it
-     else {
-        // otherwise, update cell for regular message
-        let text = message[Constants.MessageFields.text] ?? "[message]"
-        cell!.textLabel?.text = name + ": " + text
-        cell!.imageView?.image = placeholderImage
-    }
-    
-    */
     
     func downloadCategoriesFromFirebase() {
-        print("download categories")
         ref.child("Category").observeSingleEvent(of: .value, with: { (snapshot) in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
@@ -81,11 +68,20 @@ class HomeVC: UIViewController {
                     self.categories.append(keys)
                 }
             }
-            print(self.categories)
             self.tableView.reloadData()
         }) { (error) in
             print(error.localizedDescription)
             print("error reading categories")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ArtistSpotlightVC {
+            vc.artist = sender as? ArtistModel
+        }
+        
+        if let vc = segue.destination as? HomeCategoryVC {
+            vc.subcategory = sender as? CategoryModel
         }
     }
     
@@ -125,6 +121,7 @@ extension HomeVC: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
+    
 }
 
 extension HomeVC: HomeCellDelegate {
@@ -136,5 +133,11 @@ extension HomeVC: HomeCellDelegate {
         } else {
             activityIndicator.stopAnimating()
         }
+    }
+    func showArtist(artist: ArtistModel) {
+        performSegue(withIdentifier: "ShowArtist", sender: artist)
+    }
+    func showSubcategories(subcategory: CategoryModel) {
+        performSegue(withIdentifier: "ShowSubcategories", sender: subcategory)
     }
 }
