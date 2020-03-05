@@ -84,7 +84,6 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
             self.tableView.reloadData()
         }) { (error) in
             print(error.localizedDescription)
-            print("error reading categories")
         }
     }
     

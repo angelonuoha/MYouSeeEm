@@ -97,7 +97,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        print("signed in")
         performSegue(withIdentifier: "LoggedIn", sender: user)
     }
     
@@ -120,7 +119,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 extension SignInViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
       if let error = error {
-        print(error)
         return
       }
 

@@ -10,5 +10,30 @@ import Foundation
 import UIKit
 
 class MuseumsToVisitViewCell: UICollectionViewCell {
+    @IBOutlet weak var shadowView: ShadowCellView!
+    @IBOutlet weak var subcategoryImageView: UIImageView!
+    @IBOutlet weak var subcategoryTitleBackView: UIView!
+    @IBOutlet weak var subcategoryTitleLabel: UILabel!
     
+        override func awakeFromNib() {
+            shadowView.clipsToBounds = false
+        }
+        
+        var subcategory: String? {
+            didSet {
+                prepare()
+            }
+        }
+        
+        func returnImage(subcategory: String) -> UIImage? {
+            let geography = subcategory.lowercased().replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
+            return UIImage(named: "museumstovisit.\(geography)")
+        }
+        
+        func prepare() {
+            guard let subcategory = subcategory else { return }
+            subcategoryTitleLabel.text = subcategory
+            //subcategoryImageView.image = returnImage(subcategory: subcategory)
+        }
 }
+
