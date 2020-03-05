@@ -9,16 +9,29 @@
 import Foundation
 import UIKit
 
-class MuseumVC: UITableViewController {
+class MuseumVC: UIViewController {
     
     var museumData: MuseumModel?
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepare()
+    }
+    
+    func prepare() {
+        if let museumData = museumData {
+            self.title = "\(museumData.geography)"
+        }
+    }
+    
+}
+extension MuseumVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return museumData?.museums.count ?? 0
         
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MuseumTableViewCell", for: indexPath) as! MuseumTableViewCell
         if let museumData = museumData {
             cell.museumName.text = museumData.museums[indexPath.row]

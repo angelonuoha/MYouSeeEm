@@ -15,9 +15,16 @@ class HomeCategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        prepare()
     }
 
+    func prepare() {
+        if let subcategory = subcategory {
+            self.title = "\(subcategory.category)"
+        }
+    }
+    
+    
 }
 
 extension HomeCategoryVC: UICollectionViewDataSource {

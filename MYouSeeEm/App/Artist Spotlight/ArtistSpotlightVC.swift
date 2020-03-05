@@ -9,7 +9,6 @@
 import UIKit
 
 class ArtistSpotlightVC: UIViewController {
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var artistProfileImage: UIImageView!
     @IBOutlet weak var artistDescription: UITextView!
     @IBOutlet weak var songLabel: UILabel!
@@ -18,9 +17,7 @@ class ArtistSpotlightVC: UIViewController {
     
     func prepare() {
         if let artist = artist {
-            print(artist.name)
-            print(artist.description)
-            nameLabel?.text = artist.name
+            self.title = "\(artist.name)"
             artistProfileImage?.image = returnImage(artist: artist.name)
             artistDescription?.text = artist.description
             songLabel?.text = "Checkout their song in the MYouSeeEm Playlist: \(artist.song)"

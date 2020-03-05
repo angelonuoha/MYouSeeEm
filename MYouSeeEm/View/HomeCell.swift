@@ -122,7 +122,7 @@ extension HomeCell: UICollectionViewDataSource {
             let selectedGeography = subcategories[indexPath.row]
             let museumSnapshot = categoryData.value as! [String: [String]]
             let index = museumSnapshot.index(forKey: selectedGeography)
-            let museumData = MuseumModel(museums: museumSnapshot[index!].value)
+            let museumData = MuseumModel(geography: selectedGeography, museums: museumSnapshot[index!].value)
             self.delegate?.showMuseums(museumData: museumData)
         } else {
             let superCategory = category!

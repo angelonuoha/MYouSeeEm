@@ -72,7 +72,6 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         ref.child("Category").observeSingleEvent(of: .value, with: { (snapshot) in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                //print(rest)
                 
                 let keys = rest.key
                 if keys == "Artist Spotlight" {

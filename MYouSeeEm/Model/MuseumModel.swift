@@ -9,5 +9,6 @@
 import Foundation
 
 struct MuseumModel {
+    let geography: String
     let museums: [String]
 }
