@@ -16,7 +16,6 @@
 		0B4917D5240EE9420046A505 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917D4240EE9420046A505 /* UIColor+hex.swift */; };
 		0B4917D9240F02CB0046A505 /* HomeSubcategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917D8240F02CA0046A505 /* HomeSubcategoryCell.swift */; };
 		0B4917E5241073DC0046A505 /* HomeArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917E4241073DC0046A505 /* HomeArtistCell.swift */; };
-		0B4917E8241079A00046A505 /* ArtistSpotlightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917E7241079A00046A505 /* ArtistSpotlightVC.swift */; };
 		0B4917EA241089A10046A505 /* ArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917E9241089A10046A505 /* ArtistModel.swift */; };
 		0B4917EC2410B05C0046A505 /* SubcategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917EB2410B05C0046A505 /* SubcategoryModel.swift */; };
 		0B4917EE2410C5B00046A505 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917ED2410C5B00046A505 /* CategoryModel.swift */; };
@@ -75,7 +74,6 @@
 		0B4917D4240EE9420046A505 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		0B4917D8240F02CA0046A505 /* HomeSubcategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSubcategoryCell.swift; sourceTree = "<group>"; };
 		0B4917E4241073DC0046A505 /* HomeArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArtistCell.swift; sourceTree = "<group>"; };
-		0B4917E7241079A00046A505 /* ArtistSpotlightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSpotlightVC.swift; sourceTree = "<group>"; };
 		0B4917E9241089A10046A505 /* ArtistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistModel.swift; sourceTree = "<group>"; };
 		0B4917EB2410B05C0046A505 /* SubcategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryModel.swift; sourceTree = "<group>"; };
 		0B4917ED2410C5B00046A505 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -153,14 +151,6 @@
 				1ACB05352411A69300093AA0 /* UIScrollView+Utils.swift */,
 			);
 			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		0B4917E6241079820046A505 /* Artist Spotlight */ = {
-			isa = PBXGroup;
-			children = (
-				0B4917E7241079A00046A505 /* ArtistSpotlightVC.swift */,
-			);
-			path = "Artist Spotlight";
 			sourceTree = "<group>";
 		};
 		0BE461E5240C8566005A7893 = {
@@ -247,7 +237,6 @@
 			children = (
 				1ACB051D2410211A00093AA0 /* Onboarding */,
 				1ACB051E2410212400093AA0 /* Home */,
-				0B4917E6241079820046A505 /* Artist Spotlight */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -509,7 +498,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BE46231240CD0C9005A7893 /* SignInViewController.swift in Sources */,
-				0B4917E8241079A00046A505 /* ArtistSpotlightVC.swift in Sources */,
 				0BE46226240CC579005A7893 /* HomeVC.swift in Sources */,
 				0B4917E5241073DC0046A505 /* HomeArtistCell.swift in Sources */,
 				1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */,

@@ -88,7 +88,7 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ArtistSpotlightVC {
+        if let vc = segue.destination as? HomeResultsVC {
             vc.artist = sender as? ArtistModel
         }
         
