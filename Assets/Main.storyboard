@@ -263,6 +263,47 @@
             </objects>
             <point key="canvasLocation" x="29" y="842"/>
         </scene>
+        <!--MuseumVC-->
+        <scene sceneID="P6y-BK-ilF">
+            <objects>
+                <tableViewController id="O97-HZ-YYG" customClass="MuseumVC" customModule="MYouSeeEm" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tA5-cA-vIN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MuseumTableViewCell" textLabel="tkx-23-p3b" style="IBUITableViewCellStyleDefault" id="Jkz-t0-z38" customClass="MuseumTableViewCell" customModule="MYouSeeEm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jkz-t0-z38" id="MF4-qy-bMA">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tkx-23-p3b">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="museumName" destination="tkx-23-p3b" id="zkD-Ek-oUc"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="O97-HZ-YYG" id="QVw-xe-BXV"/>
+                            <outlet property="delegate" destination="O97-HZ-YYG" id="t9n-vu-1tX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="4Eu-mD-txr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSF-hU-DiG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="1041"/>
+        </scene>
         <!--HomeVC-->
         <scene sceneID="jch-2g-pHJ">
             <objects>
@@ -555,6 +596,7 @@
                         <outlet property="tableView" destination="J8b-EX-5uE" id="bSS-5y-q32"/>
                         <segue destination="BGv-rK-R2D" kind="show" identifier="ShowArtist" id="eh5-QU-uxp"/>
                         <segue destination="PaG-zn-C7u" kind="show" identifier="ShowSubcategories" id="euZ-ZP-Rcz"/>
+                        <segue destination="O97-HZ-YYG" kind="show" identifier="ShowMuseums" id="2ZC-mC-1Og"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtw-Ii-vyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -654,7 +696,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lde-fH-4q1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005.7971014492755" y="379.6875"/>
+            <point key="canvasLocation" x="1006" y="351"/>
         </scene>
         <!--Home CategoryVC-->
         <scene sceneID="dkT-v1-oOx">
@@ -932,7 +974,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1006" y="1100"/>
+            <point key="canvasLocation" x="-946" y="842"/>
         </scene>
     </scenes>
     <resources>

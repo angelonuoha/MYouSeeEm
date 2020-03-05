@@ -35,6 +35,9 @@
 		0BE46244240CD420005A7893 /* FCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46242240CD420005A7893 /* FCViewController.swift */; };
 		0BE4624B240CD623005A7893 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4624A240CD623005A7893 /* Main.storyboard */; };
 		0BE4624D240CDEDE005A7893 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4624C240CDEDE005A7893 /* MenuVC.swift */; };
+		1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05222411001900093AA0 /* MuseumVC.swift */; };
+		1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */; };
+		1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB0526241103B800093AA0 /* MuseumModel.swift */; };
 		8662C20BD93E16F690E43F0B /* Pods_MYouSeeEm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +93,9 @@
 		0BE46242240CD420005A7893 /* FCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCViewController.swift; sourceTree = "<group>"; };
 		0BE4624A240CD623005A7893 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0BE4624C240CDEDE005A7893 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		1ACB05222411001900093AA0 /* MuseumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumVC.swift; sourceTree = "<group>"; };
+		1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumTableViewCell.swift; sourceTree = "<group>"; };
+		1ACB0526241103B800093AA0 /* MuseumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumModel.swift; sourceTree = "<group>"; };
 		5F983AA56B471ADF0CA0FC29 /* Pods-MYouSeeEm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.release.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.release.xcconfig"; sourceTree = "<group>"; };
 		73FCB475416DB7320A6CDED3 /* Pods-MYouSeeEm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYouSeeEm.debug.xcconfig"; path = "Target Support Files/Pods-MYouSeeEm/Pods-MYouSeeEm.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC502494D7E7BA77D8CEBAF /* Pods_MYouSeeEm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MYouSeeEm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				1ACB051C241020E900093AA0 /* App */,
-				0B4917E6241079820046A505 /* Artist Spotlight */,
 				0BE461F1240C8566005A7893 /* AppDelegate.swift */,
 				0BE46242240CD420005A7893 /* FCViewController.swift */,
 				0BE461F3240C8566005A7893 /* SceneDelegate.swift */,
@@ -206,6 +211,7 @@
 				0B4917E9241089A10046A505 /* ArtistModel.swift */,
 				0B4917EB2410B05C0046A505 /* SubcategoryModel.swift */,
 				0B4917ED2410C5B00046A505 /* CategoryModel.swift */,
+				1ACB0526241103B800093AA0 /* MuseumModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			children = (
 				1ACB051D2410211A00093AA0 /* Onboarding */,
 				1ACB051E2410212400093AA0 /* Home */,
+				0B4917E6241079820046A505 /* Artist Spotlight */,
 				1ACB051F2410214D00093AA0 /* Museum */,
 			);
 			path = App;
@@ -246,6 +253,8 @@
 				0B4917D8240F02CA0046A505 /* HomeSubcategoryCell.swift */,
 				0BE4624C240CDEDE005A7893 /* MenuVC.swift */,
 				0B4917E4241073DC0046A505 /* HomeArtistCell.swift */,
+				0B4917CA240E06340046A505 /* HomeCategoryVC.swift */,
+				0BE46235240CD130005A7893 /* CategoryViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -253,8 +262,8 @@
 		1ACB051F2410214D00093AA0 /* Museum */ = {
 			isa = PBXGroup;
 			children = (
-				0B4917CA240E06340046A505 /* HomeCategoryVC.swift */,
-				0BE46235240CD130005A7893 /* CategoryViewCell.swift */,
+				1ACB05222411001900093AA0 /* MuseumVC.swift */,
+				1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */,
 			);
 			path = Museum;
 			sourceTree = "<group>";
@@ -474,7 +483,9 @@
 				0B4917E8241079A00046A505 /* ArtistSpotlightVC.swift in Sources */,
 				0BE46226240CC579005A7893 /* HomeVC.swift in Sources */,
 				0B4917E5241073DC0046A505 /* HomeArtistCell.swift in Sources */,
+				1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */,
 				0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */,
+				1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */,
 				0B4917EC2410B05C0046A505 /* SubcategoryModel.swift in Sources */,
 				0BE461F2240C8566005A7893 /* AppDelegate.swift in Sources */,
 				0B4917EE2410C5B00046A505 /* CategoryModel.swift in Sources */,
@@ -492,6 +503,7 @@
 				0B4917D5240EE9420046A505 /* UIColor+hex.swift in Sources */,
 				0B4917CB240E06340046A505 /* HomeCategoryVC.swift in Sources */,
 				0BE4622D240CD07E005A7893 /* Constants.swift in Sources */,
+				1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

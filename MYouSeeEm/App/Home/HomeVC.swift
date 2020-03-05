@@ -96,6 +96,9 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         if let vc = segue.destination as? HomeCategoryVC {
             vc.subcategory = sender as? CategoryModel
         }
+        if let vc = segue.destination as? MuseumVC {
+            vc.museumData = sender as? MuseumModel
+        }
     }
     
     @IBAction func showMenu(_ sender: Any) {
@@ -155,6 +158,9 @@ extension HomeVC: HomeCellDelegate {
     }
     func showSubcategories(subcategory: CategoryModel) {
         performSegue(withIdentifier: "ShowSubcategories", sender: subcategory)
+    }
+    func showMuseums(museumData: MuseumModel) {
+        performSegue(withIdentifier: "ShowMuseums", sender: museumData)
     }
 }
 

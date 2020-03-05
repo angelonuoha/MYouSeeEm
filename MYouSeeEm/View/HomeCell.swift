@@ -14,6 +14,7 @@ protocol HomeCellDelegate {
     func makeLoadingView(visible: Bool)
     func showArtist(artist: ArtistModel)
     func showSubcategories(subcategory: CategoryModel)
+    func showMuseums(museumData: MuseumModel)
 }
 
 class HomeCell: UITableViewCell {
@@ -117,6 +118,12 @@ extension HomeCell: UICollectionViewDataSource {
                 let artist = ArtistModel(name: selectedArtist, description: artistDescription, additionalInfo: additionalInfo, song: song)
                 self.delegate?.showArtist(artist: artist)
             }
+        } else if category! == "Museums to Visit" {
+            let selectedGeography = subcategories[indexPath.row]
+            let museumSnapshot = categoryData.value as! [String: [String]]
+            let index = museumSnapshot.index(forKey: selectedGeography)
+            let museumData = MuseumModel(museums: museumSnapshot[index!].value)
+            self.delegate?.showMuseums(museumData: museumData)
         } else {
             let superCategory = category!
             let selectedCategory = subcategories[indexPath.row]
