@@ -53,7 +53,7 @@ extension HomeCategoryVC: UICollectionViewDataSource {
             let selectedSubcategory = subcategory.names[indexPath.row]
             let index = subcategory.categoryData.index(forKey: selectedSubcategory)
             let subcategoryData = subcategory.categoryData[index!].value
-            if let author = subcategoryData[Constants.subcategoryData.author], let instagram = subcategoryData[Constants.subcategoryData.instagram], let description = subcategoryData[Constants.subcategoryData.description], let date = subcategoryData[Constants.subcategoryData.date], let additionalInfo = subcategoryData[Constants.subcategoryData.additionalInfo] {
+            if let author = subcategoryData[Constants.SubcategoryData.author], let instagram = subcategoryData[Constants.SubcategoryData.instagram], let description = subcategoryData[Constants.SubcategoryData.description], let date = subcategoryData[Constants.SubcategoryData.date], let additionalInfo = subcategoryData[Constants.SubcategoryData.additionalInfo] {
                 let subcategoryDetail = SubcategoryModel(author: author, instagram: instagram, description: description, date: date, additionalInfo: additionalInfo, category: subcategory.superCategory, subcategory: subcategory.category, photoId: selectedSubcategory)
                 performSegue(withIdentifier: "ShowSubcategoryDetail", sender: subcategoryDetail)
             }

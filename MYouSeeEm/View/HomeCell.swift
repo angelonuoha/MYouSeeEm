@@ -63,7 +63,7 @@ class HomeCell: UITableViewCell {
         
         if let category = category {
             ref.child("Category/\(category)/").observeSingleEvent(of: .value, with: { (snapshot) in
-                self.data = snapshot.children.allObjects as! [AnyObject]
+                self.data = snapshot.children.allObjects as [AnyObject]
                 self.categoryData = snapshot
                 let enumerator = snapshot.children
                 while let rest = enumerator.nextObject() as? DataSnapshot {
@@ -114,7 +114,7 @@ extension HomeCell: UICollectionViewDataSource {
             let selectedArtist = artists[indexPath.row]
             let artistSnapshot = data[indexPath.row] as! DataSnapshot
             let artistData = artistSnapshot.value as! [String: String]
-            if let song = artistData[Constants.artistSpotlight.song], let artistDescription = artistData[Constants.artistSpotlight.description], let additionalInfo = artistData[Constants.artistSpotlight.additionalInfo] {
+            if let song = artistData[Constants.ArtistSpotlight.song], let artistDescription = artistData[Constants.ArtistSpotlight.description], let additionalInfo = artistData[Constants.ArtistSpotlight.additionalInfo] {
                 let artist = ArtistModel(name: selectedArtist, description: artistDescription, additionalInfo: additionalInfo, song: song)
                 self.delegate?.showArtist(artist: artist)
             }

@@ -34,6 +34,8 @@
 		0BE46244240CD420005A7893 /* FCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46242240CD420005A7893 /* FCViewController.swift */; };
 		0BE4624B240CD623005A7893 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4624A240CD623005A7893 /* Main.storyboard */; };
 		0BE4624D240CDEDE005A7893 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4624C240CDEDE005A7893 /* MenuVC.swift */; };
+		1A67A6FA2412E7340016A2BC /* EventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A67A6F92412E7340016A2BC /* EventsViewCell.swift */; };
+		1A67A6FC2412F98E0016A2BC /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A67A6FB2412F98E0016A2BC /* UIView+Border.swift */; };
 		1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05222411001900093AA0 /* MuseumVC.swift */; };
 		1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */; };
 		1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB0526241103B800093AA0 /* MuseumModel.swift */; };
@@ -98,6 +100,8 @@
 		0BE46242240CD420005A7893 /* FCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCViewController.swift; sourceTree = "<group>"; };
 		0BE4624A240CD623005A7893 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0BE4624C240CDEDE005A7893 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		1A67A6F92412E7340016A2BC /* EventsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewCell.swift; sourceTree = "<group>"; };
+		1A67A6FB2412F98E0016A2BC /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 		1ACB05222411001900093AA0 /* MuseumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumVC.swift; sourceTree = "<group>"; };
 		1ACB05242411005400093AA0 /* MuseumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumTableViewCell.swift; sourceTree = "<group>"; };
 		1ACB0526241103B800093AA0 /* MuseumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumModel.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				0B4917D0240EE66C0046A505 /* CALayer+Shadow.swift */,
 				0B4917D4240EE9420046A505 /* UIColor+hex.swift */,
 				1ACB05352411A69300093AA0 /* UIScrollView+Utils.swift */,
+				1A67A6FB2412F98E0016A2BC /* UIView+Border.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				0BE4624C240CDEDE005A7893 /* MenuVC.swift */,
 				1ACB052B24117C4300093AA0 /* AboutUsVC.swift */,
 				1ACB052D24117C5400093AA0 /* EventsVC.swift */,
+				1A67A6F92412E7340016A2BC /* EventsViewCell.swift */,
 				1ACB051F2410214D00093AA0 /* Museum To Visit */,
 			);
 			path = SideMenu;
@@ -528,6 +534,8 @@
 				0BE4622D240CD07E005A7893 /* Constants.swift in Sources */,
 				1ACB0527241103B800093AA0 /* MuseumModel.swift in Sources */,
 				1ACB052E24117C5400093AA0 /* EventsVC.swift in Sources */,
+				1A67A6FA2412E7340016A2BC /* EventsViewCell.swift in Sources */,
+				1A67A6FC2412F98E0016A2BC /* UIView+Border.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

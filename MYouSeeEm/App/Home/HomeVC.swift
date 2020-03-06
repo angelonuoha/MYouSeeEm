@@ -13,6 +13,8 @@ import FirebaseAuth
 import LMCSideMenu
 import MessageUI
 
+var currentUser: User?
+
 class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     var interactor: MenuTransitionInteractor = MenuTransitionInteractor()
     
@@ -59,6 +61,7 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        currentUser = profile
     }
     func prepareMenu() {
         

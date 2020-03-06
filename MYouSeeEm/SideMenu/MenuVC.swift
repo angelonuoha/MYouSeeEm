@@ -39,12 +39,6 @@ class MenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepare()
-        /*
-        APISharedService.shared.userSession.currentProfile.bind { [weak self] userModel in
-            self?.profile = userModel
-        }
-        .disposed(by: disposeBag)
- */
     }
     
     func prepare() {

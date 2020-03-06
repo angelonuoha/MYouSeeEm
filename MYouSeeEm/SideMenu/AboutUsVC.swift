@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import UIKit
+
+class AboutUsVC: UIViewController {
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
+    
+}
