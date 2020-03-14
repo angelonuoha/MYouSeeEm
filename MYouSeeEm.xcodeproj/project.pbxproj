@@ -185,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				1ACB051C241020E900093AA0 /* App */,
-				1ACB052A24117C1C00093AA0 /* SideMenu */,
 				0BE461F1240C8566005A7893 /* AppDelegate.swift */,
 				0BE46242240CD420005A7893 /* FCViewController.swift */,
 				0BE461F3240C8566005A7893 /* SceneDelegate.swift */,
@@ -242,6 +241,7 @@
 			children = (
 				1ACB051D2410211A00093AA0 /* Onboarding */,
 				1ACB051E2410212400093AA0 /* Home */,
+				1ACB052A24117C1C00093AA0 /* SideMenu */,
 			);
 			path = App;
 			sourceTree = "<group>";

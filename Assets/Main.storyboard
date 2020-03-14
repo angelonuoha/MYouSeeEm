@@ -563,26 +563,26 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="755"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeCell" rowHeight="179" id="2u0-Rh-Rdo" customClass="HomeCell" customModule="MYouSeeEm" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="179"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeCell" rowHeight="249" id="2u0-Rh-Rdo" customClass="HomeCell" customModule="MYouSeeEm" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2u0-Rh-Rdo" id="yAM-RY-ISr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyF-GB-IQR">
-                                                            <rect key="frame" x="20" y="11" width="70.5" height="10"/>
+                                                            <rect key="frame" x="20" y="11" width="70.5" height="60"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BSx-4e-nGy">
-                                                            <rect key="frame" x="0.0" y="29" width="414" height="130"/>
+                                                            <rect key="frame" x="0.0" y="79" width="414" height="150"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="130" id="fjJ-Ep-FrH"/>
+                                                                <constraint firstAttribute="height" constant="150" id="fjJ-Ep-FrH"/>
                                                             </constraints>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="15" minimumInteritemSpacing="15" id="lQD-nr-e98">
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="15" id="lQD-nr-e98">
                                                                 <size key="itemSize" width="130" height="130"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -590,7 +590,7 @@
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeSubcategoryCell" id="qKj-kZ-MdO" customClass="HomeSubcategoryCell" customModule="MYouSeeEm" customModuleProvider="target">
-                                                                    <rect key="frame" x="20" y="0.0" width="130" height="130"/>
+                                                                    <rect key="frame" x="20" y="10" width="130" height="130"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Swy-AY-2ca">
                                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -673,7 +673,7 @@
                                                                     </connections>
                                                                 </collectionViewCell>
                                                                 <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeArtistCell" id="l8n-aT-AWo" customClass="HomeArtistCell" customModule="MYouSeeEm" customModuleProvider="target">
-                                                                    <rect key="frame" x="165" y="0.0" width="130" height="130"/>
+                                                                    <rect key="frame" x="165" y="10" width="130" height="130"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="v9M-JI-jvY">
                                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
