@@ -7,6 +7,7 @@ target 'MYouSeeEm' do
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Email'
   pod 'LMCSideMenu'
+  pod 'GoneVisible'
 
 
 end

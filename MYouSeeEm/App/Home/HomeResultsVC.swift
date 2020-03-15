@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
-//import GoneVisible
+import GoneVisible
 
 class HomeResultsVC: UIViewController {
     @IBOutlet weak var resultImageView: UIImageView!
@@ -17,8 +17,10 @@ class HomeResultsVC: UIViewController {
     @IBOutlet weak var instagramHandle: UILabel!
     @IBOutlet weak var instagramLabel: UILabel!
     @IBOutlet weak var instagramHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var instagramView: UIView!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var authorView: UIView!
     @IBOutlet weak var authorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var dateHeightConstraint: NSLayoutConstraint!
@@ -34,6 +36,8 @@ class HomeResultsVC: UIViewController {
     @IBOutlet weak var artistProfileImage: UIImageView!
     @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var commentsView: UIView!
     
     var subcategoryDetail: SubcategoryModel?
     var artist: ArtistModel?
@@ -53,6 +57,8 @@ class HomeResultsVC: UIViewController {
         prepare()
         scrollView.scrollToTop(animated: true)
         suscribeToKeyboardNotifications()
+        shadowView.clipsToBounds = false
+        commentsView.layer.cornerRadius = 10
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -72,7 +78,7 @@ class HomeResultsVC: UIViewController {
                 artistDescription.isScrollEnabled = true
                 artistDescription.isEditable = false
             }
-            hideLabels(author: author, authorLabel: authorLabel, instagramHandle: instagramHandle, instagramLabel: instagramLabel, date: date, additionalInfo: additionalInfo)
+            hideLabels(author: author, authorLabel: authorLabel, instagramHandle: instagramHandle, instagramLabel: instagramLabel, date: date)
         } else {
             if let subcategoryDetail = subcategoryDetail {
                 resultImageView.image = returnImage(category: subcategoryDetail.category, subcategory: subcategoryDetail.subcategory, photoId: subcategoryDetail.photoId)
@@ -86,6 +92,33 @@ class HomeResultsVC: UIViewController {
                 additionalInfo.text = "Additional Info: \(subcategoryDetail.additionalInfo)"
             }
             hideArtistLabels(songLabel: songLabel, appleMusic: appleMusic, spotify: spotify)
+        }
+        downloadComments()
+    }
+    
+    func downloadComments() {
+        if isArtist {
+            if let artist = artist {
+                ref.child("Comments/Artist Spotlight/\(artist.name)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
+                    let enumerator = snapshot.children
+                    while let rest = enumerator.nextObject() as? DataSnapshot {
+                        self.comments.append(rest)
+                    }
+                    self.commentsCount.text = String(self.comments.count)
+                }){ (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        } else if let subcategoryDetail = subcategoryDetail {
+            ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
+                let enumerator = snapshot.children
+                while let rest = enumerator.nextObject() as? DataSnapshot {
+                    self.comments.append(rest)
+                }
+                self.commentsCount.text = String(self.comments.count)
+            }){ (error) in
+                print(error.localizedDescription)
+            }
         }
     }
     /*
@@ -118,20 +151,13 @@ class HomeResultsVC: UIViewController {
     }
  */
     
-    func hideLabels(author: UILabel, authorLabel: UILabel, instagramHandle: UILabel, instagramLabel: UILabel, date: UILabel, additionalInfo: UILabel) {
-        author.isHidden = isArtist
-        //author.gone()
-        authorLabel.isHidden = isArtist
-        //authorLabel.gone()
-        //authorHeightConstraint.constant = 0
-        instagramHandle.isHidden = isArtist
-        //instagramHandle.gone()
-        instagramLabel.isHidden = isArtist
-        //instagramLabel.gone()
-        //instagramHeightConstraint.constant = 0
-        date.isHidden = isArtist
-        //date.gone()
-        //dateHeightConstraint.constant = 0
+    func hideLabels(author: UILabel, authorLabel: UILabel, instagramHandle: UILabel, instagramLabel: UILabel, date: UILabel) {
+        authorView.gone()
+        authorHeightConstraint.constant = 0
+        instagramView.gone()
+        instagramHeightConstraint.constant = 0
+        dateHeightConstraint.constant = 0
+        stackView.spacing = 0
     }
     
     func hideArtistLabels(songLabel: UILabel, appleMusic: UIButton, spotify: UIButton) {
@@ -197,6 +223,18 @@ class HomeResultsVC: UIViewController {
     @IBAction func didSendMessage(_ sender: Any) {
         let _ = textFieldShouldReturn(commentTextField)
         commentTextField.text = ""
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? HomeCommentsVC {
+            vc.artist = artist
+            vc.subcategoryDetail = subcategoryDetail
+            vc.comments = comments
+        }
+    }
+    
+    @IBAction func seeAllComments(_ sender: Any) {
+        performSegue(withIdentifier: "SeeAllComments", sender: nil)
     }
     
 }

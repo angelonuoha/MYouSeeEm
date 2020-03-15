@@ -40,6 +40,7 @@ PODS:
     - GoogleUtilities/UserDefaults
   - FirebaseUI/Email (8.4.2):
     - FirebaseUI/Auth
+  - GoneVisible (1.2.0)
   - GoogleDataTransport (5.0.0)
   - GoogleDataTransportCCTSupport (2.0.0):
     - GoogleDataTransport (~> 5.0)
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseUI/Auth
   - FirebaseUI/Email
+  - GoneVisible
   - GoogleSignIn
   - LMCSideMenu
 
@@ -98,6 +100,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
     - FirebaseUI
+    - GoneVisible
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleSignIn
@@ -118,6 +121,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
   FirebaseUI: e57e9b9c4340631151fbe67a14206d23d0974f37
+  GoneVisible: c552940cd9df7548427f6bffd000dcbcc6de187f
   GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
   GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
@@ -128,6 +132,6 @@ SPEC CHECKSUMS:
   LMCSideMenu: a6703aff9090fb928311b841780afd99fcc72bfe
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: e990a17fdebca0c201c3cf534a83c2a79c69a89e
+PODFILE CHECKSUM: aa54f314c54e74de7313945915231580772fac9f
 
 COCOAPODS: 1.8.4
