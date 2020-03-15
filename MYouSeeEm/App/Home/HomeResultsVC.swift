@@ -9,26 +9,31 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+//import GoneVisible
 
 class HomeResultsVC: UIViewController {
     @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var resultDescription: UITextView!
     @IBOutlet weak var instagramHandle: UILabel!
+    @IBOutlet weak var instagramLabel: UILabel!
+    @IBOutlet weak var instagramHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var authorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var dateHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var additionalInfo: UILabel!
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var noCommentsLabel: UILabel!
+    @IBOutlet weak var commentsCount: UILabel!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var appleMusic: UIButton!
     @IBOutlet weak var spotify: UIButton!
+    @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var artistDescription: UITextView!
     @IBOutlet weak var artistProfileImage: UIImageView!
-    @IBOutlet weak var verticalHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var commentTextField: UITextField!
-    @IBOutlet var dismissKeyboardRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stackView: UIStackView!
     
     var subcategoryDetail: SubcategoryModel?
     var artist: ArtistModel?
@@ -61,36 +66,36 @@ class HomeResultsVC: UIViewController {
             if let artist = artist {
                 self.title = "\(artist.name)"
                 artistProfileImage?.image = returnArtistImage(artist: artist.name)
-                artistDescription?.text = artist.description
+                artistDescription?.attributedText = addDescription(description: artist.description)
+                additionalInfo?.text = artist.additionalInfo
                 songLabel?.text = "Checkout their song in the MYouSeeEm Playlist: \(artist.song)"
-                artistDescription.isScrollEnabled = false
+                artistDescription.isScrollEnabled = true
                 artistDescription.isEditable = false
             }
-            hideLabels(author: author, instagramHandle: instagramHandle, date: date, additionalInfo: additionalInfo)
+            hideLabels(author: author, authorLabel: authorLabel, instagramHandle: instagramHandle, instagramLabel: instagramLabel, date: date, additionalInfo: additionalInfo)
         } else {
             if let subcategoryDetail = subcategoryDetail {
                 resultImageView.image = returnImage(category: subcategoryDetail.category, subcategory: subcategoryDetail.subcategory, photoId: subcategoryDetail.photoId)
                 self.title = subcategoryDetail.photoId
-                resultDescription.text = subcategoryDetail.description
-                resultDescription.isScrollEnabled = false
+                resultDescription.attributedText = addDescription(description: subcategoryDetail.description)
+                resultDescription.isScrollEnabled = true
                 resultDescription.isEditable = false
                 instagramHandle.text = subcategoryDetail.instagram
                 author.text = subcategoryDetail.author
                 date.text = subcategoryDetail.date
-                additionalInfo.text = subcategoryDetail.additionalInfo
+                additionalInfo.text = "Additional Info: \(subcategoryDetail.additionalInfo)"
             }
-            hideArtistLabels(songLabel: songLabel, appleMusic: appleMusic, spotify: spotify, verticalHeightConstraint: verticalHeightConstraint)
+            hideArtistLabels(songLabel: songLabel, appleMusic: appleMusic, spotify: spotify)
         }
-        downloadComments()
     }
-    
+    /*
     func handleComments() {
         if !commentsExists { tableHeightConstraint.constant = 0 }
         noCommentsLabel.isHidden = commentsExists
         commentsTableView.isHidden = !commentsExists
         self.commentsTableView.reloadData()
     }
-    /*
+    
     func listenForComments() {
         if isArtist {
             if let artist = artist {
@@ -113,50 +118,33 @@ class HomeResultsVC: UIViewController {
     }
  */
     
-    func hideLabels(author: UILabel, instagramHandle: UILabel, date: UILabel, additionalInfo: UILabel) {
+    func hideLabels(author: UILabel, authorLabel: UILabel, instagramHandle: UILabel, instagramLabel: UILabel, date: UILabel, additionalInfo: UILabel) {
         author.isHidden = isArtist
+        //author.gone()
+        authorLabel.isHidden = isArtist
+        //authorLabel.gone()
+        //authorHeightConstraint.constant = 0
         instagramHandle.isHidden = isArtist
+        //instagramHandle.gone()
+        instagramLabel.isHidden = isArtist
+        //instagramLabel.gone()
+        //instagramHeightConstraint.constant = 0
         date.isHidden = isArtist
-        additionalInfo.isHidden = isArtist
+        //date.gone()
+        //dateHeightConstraint.constant = 0
     }
     
-    func hideArtistLabels(songLabel: UILabel, appleMusic: UIButton, spotify: UIButton, verticalHeightConstraint: NSLayoutConstraint) {
+    func hideArtistLabels(songLabel: UILabel, appleMusic: UIButton, spotify: UIButton) {
         songLabel.isHidden = !isArtist
         appleMusic.isHidden = !isArtist
         spotify.isHidden = !isArtist
-        verticalHeightConstraint.constant = -60
     }
     
-    func downloadComments() {
-        if isArtist {
-            if let artist = artist {
-                ref.child("Comments/Artist Spotlight/\(artist.name)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
-                    let enumerator = snapshot.children
-                    while let rest = enumerator.nextObject() as? DataSnapshot {
-                        self.comments.append(rest)
-                    }
-                    self.handleComments()
-                }){ (error) in
-                    print(error.localizedDescription)
-                }
-            }
-        } else if let subcategoryDetail = subcategoryDetail {
-            ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
-                let enumerator = snapshot.children
-                while let rest = enumerator.nextObject() as? DataSnapshot {
-                    self.comments.append(rest)
-                }
-                self.handleComments()
-            }){ (error) in
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func scrollToBottomMessage() {
-        if comments.count == 0 { return }
-        let bottomMessageIndex = IndexPath(row: commentsTableView.numberOfRows(inSection: 0) - 1, section: 0)
-        commentsTableView.scrollToRow(at: bottomMessageIndex, at: .bottom, animated: true)
+    func addDescription(description: String) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString()
+            .bold("Description: ")
+            .normal(description)
+        return attributedString
     }
     
     @IBAction func appleMusic(_ sender: Any) {
@@ -213,30 +201,6 @@ class HomeResultsVC: UIViewController {
     
 }
 
-extension HomeResultsVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCommentsViewCell", for: indexPath) as! HomeCommentsViewCell
-        let commentsSnapshot = comments[indexPath.row]
-        let comments = commentsSnapshot.value as! [String: String]
-        let name = comments[Constants.MessageFields.name] ?? "[username]"
-        let comment = comments[Constants.MessageFields.comment] ?? "[message]"
-        let date = comments[Constants.MessageFields.date] ?? "[date]"
-        cell.commentLabel.text = comment
-        cell.dateLabel.text = date
-        cell.userName.text = name
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
-    }
-    
-}
-
 extension HomeResultsVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -286,10 +250,72 @@ extension HomeResultsVC: UITextFieldDelegate {
         if commentTextField.isEditing {
             view.frame.origin.y = -getKeyboardHeight(notification)
         }
-        scrollToBottomMessage()
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
         view.frame.origin.y = 0
+    }
+}
+
+extension NSMutableAttributedString {
+    var fontSize:CGFloat { return 17 }
+    var boldFont:UIFont { return UIFont(name: "Helvetica Neue Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
+    var normalFont:UIFont { return UIFont(name: "Helvetica Neue", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)}
+
+    func bold(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : boldFont
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+
+    func normal(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : normalFont,
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+    /* Other styling methods */
+    func orangeHighlight(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .foregroundColor : UIColor.white,
+            .backgroundColor : UIColor.orange
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+
+    func blackHighlight(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .foregroundColor : UIColor.white,
+            .backgroundColor : UIColor.black
+
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+
+    func underlined(_ value:String) -> NSMutableAttributedString {
+
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font :  normalFont,
+            .underlineStyle : NSUnderlineStyle.single.rawValue
+
+        ]
+
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
     }
 }

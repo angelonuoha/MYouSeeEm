@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B030161241DC099001DF5E9 /* HomeCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */; };
 		0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917AA240E028A0046A505 /* DotsProgressView.swift */; };
 		0B4917B9240E028C0046A505 /* NavActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917AB240E028A0046A505 /* NavActionView.swift */; };
 		0B4917BC240E028C0046A505 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917AE240E028A0046A505 /* RoundImageView.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentsVC.swift; sourceTree = "<group>"; };
 		0B4917AA240E028A0046A505 /* DotsProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotsProgressView.swift; sourceTree = "<group>"; };
 		0B4917AB240E028A0046A505 /* NavActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavActionView.swift; sourceTree = "<group>"; };
 		0B4917AE240E028A0046A505 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				0BE46235240CD130005A7893 /* CategoryViewCell.swift */,
 				1ACB052824110AE300093AA0 /* HomeResultsVC.swift */,
 				1ACB05332411984A00093AA0 /* HomeCommentsViewCell.swift */,
+				0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				0B4917E5241073DC0046A505 /* HomeArtistCell.swift in Sources */,
 				1ACB05252411005400093AA0 /* MuseumTableViewCell.swift in Sources */,
 				1ACB053024117C9200093AA0 /* MuseumsToVisit.swift in Sources */,
+				0B030161241DC099001DF5E9 /* HomeCommentsVC.swift in Sources */,
 				0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */,
 				1ACB05232411001900093AA0 /* MuseumVC.swift in Sources */,
 				0B4917EC2410B05C0046A505 /* SubcategoryModel.swift in Sources */,
