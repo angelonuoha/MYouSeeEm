@@ -653,7 +653,7 @@ Cg
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3NL-ny-8zI">
-                                <rect key="frame" x="0.0" y="107.5" width="414" height="754.5"/>
+                                <rect key="frame" x="0.0" y="87" width="414" height="775"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oO7-Hi-iqX">
                                         <rect key="frame" x="114" y="333" width="186" height="88.5"/>
@@ -679,11 +679,8 @@ Cg
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J8b-EX-5uE">
-                                        <rect key="frame" x="0.0" y="164" width="414" height="591"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="755"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="591" id="sjt-1x-lrU"/>
-                                        </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeCell" rowHeight="249" id="2u0-Rh-Rdo" customClass="HomeCell" customModule="MYouSeeEm" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="249"/>
@@ -906,11 +903,11 @@ Cg
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="oO7-Hi-iqX" firstAttribute="centerX" secondItem="3NL-ny-8zI" secondAttribute="centerX" id="8iU-o5-VSi"/>
-                                    <constraint firstItem="oO7-Hi-iqX" firstAttribute="top" secondItem="3NL-ny-8zI" secondAttribute="top" constant="333" id="CLG-tg-CNV"/>
-                                    <constraint firstItem="oO7-Hi-iqX" firstAttribute="centerY" secondItem="3NL-ny-8zI" secondAttribute="centerY" id="ELL-Rd-jwh"/>
-                                    <constraint firstAttribute="bottom" secondItem="J8b-EX-5uE" secondAttribute="bottom" constant="-0.5" id="a3C-AS-7q2"/>
-                                    <constraint firstAttribute="trailing" secondItem="J8b-EX-5uE" secondAttribute="trailing" id="cqU-J7-8ZH"/>
-                                    <constraint firstItem="J8b-EX-5uE" firstAttribute="leading" secondItem="3NL-ny-8zI" secondAttribute="leading" id="i89-id-1Pj"/>
+                                    <constraint firstItem="oO7-Hi-iqX" firstAttribute="centerY" secondItem="3NL-ny-8zI" secondAttribute="centerY" constant="-10.25" id="ELL-Rd-jwh"/>
+                                    <constraint firstItem="J8b-EX-5uE" firstAttribute="leading" secondItem="3NL-ny-8zI" secondAttribute="leading" id="FQg-7Y-ni1"/>
+                                    <constraint firstAttribute="bottom" secondItem="J8b-EX-5uE" secondAttribute="bottom" constant="20" id="Wml-9Q-N1G"/>
+                                    <constraint firstItem="J8b-EX-5uE" firstAttribute="top" secondItem="3NL-ny-8zI" secondAttribute="top" id="rSg-f7-boR"/>
+                                    <constraint firstItem="J8b-EX-5uE" firstAttribute="centerX" secondItem="oO7-Hi-iqX" secondAttribute="centerX" id="ztd-yu-Qoy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -918,6 +915,7 @@ Cg
                         <constraints>
                             <constraint firstItem="3NL-ny-8zI" firstAttribute="leading" secondItem="z5u-JB-x7P" secondAttribute="leading" id="Jnh-ux-BZr"/>
                             <constraint firstItem="z5u-JB-x7P" firstAttribute="bottom" secondItem="3NL-ny-8zI" secondAttribute="bottom" id="UEl-mY-Oad"/>
+                            <constraint firstItem="oO7-Hi-iqX" firstAttribute="top" secondItem="z5u-JB-x7P" secondAttribute="top" constant="332" id="Y6L-sd-WTi"/>
                             <constraint firstItem="z5u-JB-x7P" firstAttribute="trailing" secondItem="3NL-ny-8zI" secondAttribute="trailing" id="cIq-ia-93M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z5u-JB-x7P"/>
@@ -945,7 +943,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtw-Ii-vyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="141.67916041979012"/>
+            <point key="canvasLocation" x="27.536231884057973" y="141.29464285714286"/>
         </scene>
         <!--Home CategoryVC-->
         <scene sceneID="dkT-v1-oOx">
