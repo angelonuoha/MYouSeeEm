@@ -11,6 +11,8 @@ import UIKit
 import GoogleSignIn
 import FirebaseUI
 import FirebaseDatabase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 var ref: DatabaseReference!
 var displayName = "Anonymous"
@@ -25,6 +27,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     var user: User?
     var onboardingPictures: [String] = ["first", "second", "third", "fourth"]
+    var isMFAEnabled = false
     
     fileprivate func setupSignInButton() {
         signInButton.layer.cornerRadius = 3.0
@@ -41,9 +44,8 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         configureAuth()
         setupSignInButton()
         setNavLogo()
-        //Google
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().delegate = self
+        setupGoogleLogin()
+        setupFacebookLogin()
     }
     
     override func viewDidLoad() {
@@ -56,6 +58,15 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         Auth.auth().removeStateDidChangeListener(_authHandle)
     }
     
+    func setupGoogleLogin() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
+    }
+    
+    func setupFacebookLogin() {
+        let loginButton = FBLoginButton()
+        loginButton.delegate = self
+    }
     func setNavLogo() {
         let logo = UIImage(named: "MYouSeeEmFullLogo")
         let imageView = UIImageView(image:logo)
@@ -122,6 +133,21 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         }
     }
     
+    func showMessagePrompt(_ message: String, title: String? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showTextInputPrompt(withMessage: String, completionBlock: @escaping (Bool, String?) -> Void) {
+        let alert = UIAlertController(title: "Add New Name", message: withMessage, preferredStyle: .alert)
+        alert.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension SignInViewController: GIDSignInDelegate {
@@ -142,6 +168,74 @@ extension SignInViewController: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
+    }
+}
+
+extension SignInViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+          print(error.localizedDescription)
+          return
+        }
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+          if let error = error {
+            let authError = error as NSError
+            if (self.isMFAEnabled && authError.code == AuthErrorCode.secondFactorRequired.rawValue) {
+              // The user is a multi-factor user. Second factor challenge is required.
+              let resolver = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+              var displayNameString = ""
+              for tmpFactorInfo in (resolver.hints) {
+                displayNameString += tmpFactorInfo.displayName ?? ""
+                displayNameString += " "
+              }
+              self.showTextInputPrompt(withMessage: "Select factor to sign in\n\(displayNameString)", completionBlock: { userPressedOK, displayName in
+                var selectedHint: PhoneMultiFactorInfo?
+                for tmpFactorInfo in resolver.hints {
+                  if (displayName == tmpFactorInfo.displayName) {
+                    selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
+                  }
+                }
+                PhoneAuthProvider.provider().verifyPhoneNumber(with: selectedHint!, uiDelegate: nil, multiFactorSession: resolver.session) { verificationID, error in
+                  if error != nil {
+                    print("Multi factor start sign in failed. Error: \(error.debugDescription)")
+                  } else {
+                    self.showTextInputPrompt(withMessage: "Verification code for \(selectedHint?.displayName ?? "")", completionBlock: { userPressedOK, verificationCode in
+                      let credential: PhoneAuthCredential? = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
+                      let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential!)
+                      resolver.resolveSignIn(with: assertion!) { authResult, error in
+                        if error != nil {
+                          print("Multi factor finanlize sign in failed. Error: \(error.debugDescription)")
+                        } else {
+                          self.navigationController?.popViewController(animated: true)
+                        }
+                      }
+                    })
+                  }
+                }
+              })
+            } else {
+              self.showMessagePrompt(error.localizedDescription)
+              return
+            }
+            // ...
+            return
+          }
+          // User is signed in
+          // ...
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        //
+    }
+    
+    func loginButton(_ loginButton: FBButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
+      if let error = error {
+        print(error.localizedDescription)
+        return
+      }
+      // ...
     }
 }
 

@@ -8,6 +8,6 @@ target 'MYouSeeEm' do
   pod 'FirebaseUI/Email'
   pod 'LMCSideMenu'
   pod 'GoneVisible'
-
+  pod 'FBSDKLoginKit'
 
 end
