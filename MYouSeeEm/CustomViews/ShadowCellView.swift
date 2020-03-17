@@ -2,8 +2,8 @@
 //  ShadowCellView.swift
 //  Zuvy
 //
-//  Created by Vladimir Fedorov on 24.12.2019.
-//  Copyright © 2019 Zuvy. All rights reserved.
+//  Created by Angel Onuoha on 3/2/20.
+//  Copyright © 2020 MYouSeeEm. All rights reserved.
 //
 
 import UIKit

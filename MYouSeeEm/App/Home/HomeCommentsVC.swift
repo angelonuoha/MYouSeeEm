@@ -26,6 +26,16 @@ class HomeCommentsVC: UIViewController {
         return artist != nil
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        suscribeToKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        unsuscribeToKeyboardNotifications()
+    }
+    
     func downloadComments() {
         if isArtist {
             if let artist = artist {
@@ -40,7 +50,7 @@ class HomeCommentsVC: UIViewController {
                 }
             }
         } else if let subcategoryDetail = subcategoryDetail {
-            ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/\(subcategoryDetail.photoId)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
                 let enumerator = snapshot.children
                 while let rest = enumerator.nextObject() as? DataSnapshot {
                     self.comments.append(rest)

@@ -11,6 +11,16 @@ import UIKit
 
 class AboutUsVC: UIViewController {
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var imageView: UIImageView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setNavLogo()
+    }
+    
+    func setNavLogo() {
+        let logo = UIImage(named: "MYouSeeEmLogo.png")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
     
 }

@@ -26,14 +26,14 @@ class MuseumsToVisitViewCell: UICollectionViewCell {
         }
         
         func returnImage(subcategory: String) -> UIImage? {
-            let geography = subcategory.lowercased().replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
+            let geography = subcategory.lowercased().replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "&", with: "and")
+            print(geography)
             return UIImage(named: "museumstovisit.\(geography)")
         }
         
         func prepare() {
             guard let subcategory = subcategory else { return }
-            subcategoryTitleLabel.text = subcategory
-            //subcategoryImageView.image = returnImage(subcategory: subcategory)
+            subcategoryImageView.image = returnImage(subcategory: subcategory)
         }
 }
 

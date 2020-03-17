@@ -138,6 +138,6 @@ extension HomeCell: UICollectionViewDataSource {
 
 extension HomeCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 150, height: 150)
+        return .init(width: 160, height: 160)
     }
 }

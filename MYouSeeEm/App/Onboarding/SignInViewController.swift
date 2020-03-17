@@ -20,9 +20,11 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet var googleSignIn: GIDSignInButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     var user: User?
+    var onboardingPictures: [String] = ["first", "second", "third", "fourth"]
     
     fileprivate func setupSignInButton() {
         signInButton.layer.cornerRadius = 3.0
@@ -38,7 +40,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         activityIndicator.startAnimating()
         configureAuth()
         setupSignInButton()
-        
+        setNavLogo()
         //Google
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
@@ -52,6 +54,13 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     
     deinit {
         Auth.auth().removeStateDidChangeListener(_authHandle)
+    }
+    
+    func setNavLogo() {
+        let logo = UIImage(named: "MYouSeeEmFullLogo")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
     }
     
     func configureAuth() {
@@ -108,8 +117,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationNavigationController = segue.destination as! UINavigationController
-        if let vc = destinationNavigationController.topViewController as? HomeVC {
+        if let vc = segue.destination as? HomeVC {
             vc.profile = sender as? User
         }
     }
@@ -118,9 +126,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 
 extension SignInViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-      if let error = error {
-        return
-      }
+        guard error != nil else { return }
 
       guard let authentication = user.authentication else { return }
       let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
@@ -136,6 +142,26 @@ extension SignInViewController: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
+    }
+}
+
+extension SignInViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return onboardingPictures.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SignInViewCell", for: indexPath) as! SignInViewCell
+        cell.onboardingPictures = onboardingPictures[indexPath.row]
+        return cell
+    }
+}
+
+extension SignInViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let w = collectionView.bounds.width
+        let m = w - 1
+        return .init(width: m, height: w)
     }
 }
 

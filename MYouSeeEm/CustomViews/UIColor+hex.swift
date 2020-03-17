@@ -2,7 +2,7 @@
 //  UIColor+hex.swift
 //  MYouSeeEm
 //
-//  Created by Angel Onuoha on 3/3/20.
+//  Created by Angel Onuoha on 3/2/20.
 //  Copyright © 2020 MYouSeeEm. All rights reserved.
 //
 

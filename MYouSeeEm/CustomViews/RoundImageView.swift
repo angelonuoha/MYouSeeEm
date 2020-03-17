@@ -2,8 +2,8 @@
 //  RoundImageView.swift
 //  Zuvy
 //
-//  Created by Vladimir Fedorov on 31.10.2019.
-//  Copyright © 2019 Zuvy. All rights reserved.
+//  Created by Angel Onuoha on 3/2/20.
+//  Copyright © 2020 MYouSeeEm. All rights reserved.
 //
 
 import UIKit

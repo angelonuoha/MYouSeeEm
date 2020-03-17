@@ -53,10 +53,7 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         super.viewDidLoad()
         loadData()
         prepareMenu()
-        let logo = UIImage(named: "MYouSeeEmLogo.png")
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
+        setNavLogo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +67,12 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         setupMenu(leftMenu: menuVC, rightMenu: nil)
     }
     
-    
+    func setNavLogo() {
+        let logo = UIImage(named: "MYouSeeEmLogo")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
     
     func downloadCategoriesFromFirebase() {
         ref.child("Category").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -191,7 +193,12 @@ extension HomeVC: ProfileMenuDelegate {
     }
     
     func signOut() {
-        
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        } catch {
+            showInfo("Could not logout", title: "Error")
+        }
     }
     
 }

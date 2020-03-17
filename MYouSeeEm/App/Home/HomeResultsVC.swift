@@ -25,6 +25,7 @@ class HomeResultsVC: UIViewController {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var dateHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var additionalInfo: UILabel!
+    @IBOutlet weak var additionalInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var commentsCount: UILabel!
@@ -38,6 +39,7 @@ class HomeResultsVC: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var commentsView: UIView!
+    @IBOutlet weak var musicHeightConstraint: NSLayoutConstraint!
     
     var subcategoryDetail: SubcategoryModel?
     var artist: ArtistModel?
@@ -59,6 +61,7 @@ class HomeResultsVC: UIViewController {
         suscribeToKeyboardNotifications()
         shadowView.clipsToBounds = false
         commentsView.layer.cornerRadius = 10
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -78,7 +81,7 @@ class HomeResultsVC: UIViewController {
                 artistDescription.isScrollEnabled = true
                 artistDescription.isEditable = false
             }
-            hideLabels(author: author, authorLabel: authorLabel, instagramHandle: instagramHandle, instagramLabel: instagramLabel, date: date)
+            hideLabels()
         } else {
             if let subcategoryDetail = subcategoryDetail {
                 resultImageView.image = returnImage(category: subcategoryDetail.category, subcategory: subcategoryDetail.subcategory, photoId: subcategoryDetail.photoId)
@@ -89,11 +92,12 @@ class HomeResultsVC: UIViewController {
                 instagramHandle.text = subcategoryDetail.instagram
                 author.text = subcategoryDetail.author
                 date.text = subcategoryDetail.date
-                additionalInfo.text = "Additional Info: \(subcategoryDetail.additionalInfo)"
+                additionalInfo.text = subcategoryDetail.additionalInfo
             }
-            hideArtistLabels(songLabel: songLabel, appleMusic: appleMusic, spotify: spotify)
+            hideArtistLabels()
         }
         downloadComments()
+        hideEmptyValues()
     }
     
     func downloadComments() {
@@ -110,7 +114,7 @@ class HomeResultsVC: UIViewController {
                 }
             }
         } else if let subcategoryDetail = subcategoryDetail {
-            ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/\(subcategoryDetail.photoId)/comments").observeSingleEvent(of: .value, with: { (snapshot) in
                 let enumerator = snapshot.children
                 while let rest = enumerator.nextObject() as? DataSnapshot {
                     self.comments.append(rest)
@@ -151,19 +155,46 @@ class HomeResultsVC: UIViewController {
     }
  */
     
-    func hideLabels(author: UILabel, authorLabel: UILabel, instagramHandle: UILabel, instagramLabel: UILabel, date: UILabel) {
+    func hideLabels() {
         authorView.gone()
         authorHeightConstraint.constant = 0
         instagramView.gone()
         instagramHeightConstraint.constant = 0
         dateHeightConstraint.constant = 0
         stackView.spacing = 0
+        if additionalInfo.text == "" {
+            additionalInfoHeightConstraint.constant = 0
+        }
     }
     
-    func hideArtistLabels(songLabel: UILabel, appleMusic: UIButton, spotify: UIButton) {
+    func hideArtistLabels() {
         songLabel.isHidden = !isArtist
         appleMusic.isHidden = !isArtist
         spotify.isHidden = !isArtist
+        musicHeightConstraint.constant = 0
+    }
+    
+    func hideEmptyValues() {
+        if subcategoryDetail?.author == "" {
+            authorView.gone()
+            authorHeightConstraint.constant = 0
+            stackView.spacing = 0
+        }
+        if subcategoryDetail?.instagram == "" {
+            instagramView.gone()
+            instagramHeightConstraint.constant = 0
+            stackView.spacing = 0
+        }
+        if subcategoryDetail?.date == "" {
+            dateHeightConstraint.constant = 0
+        }
+        if subcategoryDetail?.additionalInfo == "" {
+            additionalInfoHeightConstraint.constant = 0
+        }
+        if subcategoryDetail?.description == "" {
+            stackView.removeArrangedSubview(resultDescription)
+            descriptionHeightConstraint.constant = 0
+        }
     }
     
     func addDescription(description: String) -> NSAttributedString {
