@@ -88,16 +88,16 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="hXy-Qd-KW5">
-                                <rect key="frame" x="0.0" y="518" width="414" height="237"/>
+                                <rect key="frame" x="0.0" y="518" width="414" height="116.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black Art Museum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-fw-41U">
-                                        <rect key="frame" x="67" y="0.0" width="280.5" height="31.5"/>
+                                        <rect key="frame" x="67" y="0.0" width="280.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UD-ID-HTE">
-                                        <rect key="frame" x="70" y="44.5" width="274" height="31"/>
+                                        <rect key="frame" x="70" y="32" width="274" height="18.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Sign up with email">
@@ -107,12 +107,8 @@
                                             <action selector="signIn:" destination="t8K-tx-dVr" eventType="touchUpInside" id="ZEX-TU-9A6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Im8-5B-G07" customClass="FBSDKButton">
-                                        <rect key="frame" x="155" y="88.5" width="104" height="31"/>
-                                        <state key="normal" title="FacebookLogin"/>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5i-lS-jG3" customClass="GIDSignInButton">
-                                        <rect key="frame" x="70" y="132.5" width="274" height="51.5"/>
+                                        <rect key="frame" x="70" y="63.5" width="274" height="0.0"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Google Sign-In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-Zw-hDz">
                                                 <rect key="frame" x="80" y="18" width="115" height="22"/>
@@ -125,7 +121,7 @@
                                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-zM-7DY">
-                                        <rect key="frame" x="188.5" y="197" width="37" height="40"/>
+                                        <rect key="frame" x="188.5" y="76.5" width="37" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mKB-lr-sHF"/>
                                         </constraints>
@@ -157,6 +153,7 @@
                         <outlet property="collectionView" destination="Iym-im-4nh" id="oTn-yM-sUk"/>
                         <outlet property="googleSignIn" destination="X5i-lS-jG3" id="MVh-Ni-ZIZ"/>
                         <outlet property="signInButton" destination="8UD-ID-HTE" id="kqg-fc-aIm"/>
+                        <outlet property="stackView" destination="hXy-Qd-KW5" id="9xv-FK-5r0"/>
                         <segue destination="uu0-et-N0m" kind="show" identifier="LoggedIn" id="vaj-OC-ueq"/>
                     </connections>
                 </viewController>

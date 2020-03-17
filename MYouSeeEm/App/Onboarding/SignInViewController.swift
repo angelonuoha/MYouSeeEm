@@ -23,6 +23,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet var googleSignIn: GIDSignInButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var stackView: UIStackView!
     
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     var user: User?
@@ -65,7 +66,8 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     
     func setupFacebookLogin() {
         let loginButton = FBLoginButton()
-        //loginButton.delegate = self
+        loginButton.delegate = self
+        stackView.addArrangedSubview(loginButton)
     }
     func setNavLogo() {
         let logo = UIImage(named: "MYouSeeEmFullLogo")
@@ -83,8 +85,11 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
             if let activeUser = user {
                 if self.user != activeUser {
                     self.user = activeUser
-                    let name = user!.email!.components(separatedBy: "@")[0]
-                    displayName = name
+                    if let name = user!.email?.components(separatedBy: "@")[0] {
+                        displayName = name
+                    } else {
+                        displayName = 
+                    }
                     self.signedInStatus(isSignedIn: true)
                 }
             } else {
@@ -201,6 +206,64 @@ extension SignInViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
     }
+}
+
+extension SignInViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+          if let error = error {
+            let authError = error as NSError
+            if (self.isMFAEnabled && authError.code == AuthErrorCode.secondFactorRequired.rawValue) {
+              // The user is a multi-factor user. Second factor challenge is required.
+              let resolver = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+              var displayNameString = ""
+              for tmpFactorInfo in (resolver.hints) {
+                displayNameString += tmpFactorInfo.displayName ?? ""
+                displayNameString += " "
+              }
+              self.showTextInputPrompt(withMessage: "Select factor to sign in\n\(displayNameString)", completionBlock: { userPressedOK, displayName in
+                var selectedHint: PhoneMultiFactorInfo?
+                for tmpFactorInfo in resolver.hints {
+                  if (displayName == tmpFactorInfo.displayName) {
+                    selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
+                  }
+                }
+                PhoneAuthProvider.provider().verifyPhoneNumber(with: selectedHint!, uiDelegate: nil, multiFactorSession: resolver.session) { verificationID, error in
+                  if error != nil {
+                    print("Multi factor start sign in failed. Error: \(error.debugDescription)")
+                  } else {
+                    self.showTextInputPrompt(withMessage: "Verification code for \(selectedHint?.displayName ?? "")", completionBlock: { userPressedOK, verificationCode in
+                      let credential: PhoneAuthCredential? = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
+                      let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential!)
+                      resolver.resolveSignIn(with: assertion!) { authResult, error in
+                        if error != nil {
+                          print("Multi factor finanlize sign in failed. Error: \(error.debugDescription)")
+                        } else {
+                          self.navigationController?.popViewController(animated: true)
+                        }
+                      }
+                    })
+                  }
+                }
+              })
+            } else {
+              self.showMessagePrompt(error.localizedDescription)
+              return
+            }
+            // ...
+            return
+          }
+          // User is signed in
+          // ...
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        //
+    }
+    
+    
 }
 
 extension SignInViewController: UICollectionViewDataSource, UICollectionViewDelegate {

@@ -88,7 +88,6 @@
 		0BE461FF240C8569005A7893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BE46204240C8569005A7893 /* MYouSeeEmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MYouSeeEmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE46208240C8569005A7893 /* MYouSeeEmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYouSeeEmTests.swift; sourceTree = "<group>"; };
-		0BE4620A240C8569005A7893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MYouSeeEmTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		0BE4620F240C8569005A7893 /* MYouSeeEmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MYouSeeEmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE46213240C8569005A7893 /* MYouSeeEmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYouSeeEmUITests.swift; sourceTree = "<group>"; };
 		0BE46215240C8569005A7893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,11 +185,10 @@
 				0BE461F1240C8566005A7893 /* AppDelegate.swift */,
 				0BE461F3240C8566005A7893 /* SceneDelegate.swift */,
 				0BE46221240C85C8005A7893 /* GoogleService-Info.plist */,
-				0BE4620A240C8569005A7893 /* Info.plist */,
+				0BE461FF240C8569005A7893 /* Info.plist */,
 				1ACB051C241020E900093AA0 /* App */,
 				0B4917C6240E02A60046A505 /* CustomViews */,
 				0BE4622B240CD016005A7893 /* Model */,
-				0BE461FF240C8569005A7893 /* Info.plist */,
 			);
 			path = MYouSeeEm;
 			sourceTree = "<group>";
