@@ -51,6 +51,7 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("5")
         loadData()
         prepareMenu()
         setNavLogo()

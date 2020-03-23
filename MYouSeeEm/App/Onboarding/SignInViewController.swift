@@ -31,10 +31,10 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     var isMFAEnabled = false
     
     fileprivate func setupSignInButton() {
-        signInButton.layer.cornerRadius = 3.0
+        signInButton.layer.cornerRadius = 2.0
         signInButton.layer.shadowColor = UIColor.black.cgColor
         signInButton.layer.shadowOffset = CGSize(width: 0.25, height: 0.8)
-        signInButton.layer.shadowRadius = 0.8
+        signInButton.layer.shadowRadius = 0.6
         signInButton.layer.shadowOpacity = 0.7
     }
     
@@ -66,6 +66,15 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     
     func setupFacebookLogin() {
         let loginButton = FBLoginButton()
+        loginButton.layer.cornerRadius = 2.0
+        loginButton.layer.shadowColor = UIColor.black.cgColor
+        loginButton.layer.shadowOffset = CGSize(width: 0.25, height: 0.8)
+        loginButton.layer.shadowRadius = 0.6
+        loginButton.layer.shadowOpacity = 0.7
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        let widthContraints =  NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 268)
+        let heightContraints = NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.2, constant: 200)
+        NSLayoutConstraint.activate([heightContraints,widthContraints])
         loginButton.delegate = self
         stackView.addArrangedSubview(loginButton)
     }
@@ -79,11 +88,14 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     func configureAuth() {
         let authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
-        let providers: [FUIAuthProvider] = [FUIEmailAuth()]
+        let providers: [FUIAuthProvider] = [FUIEmailAuth(), FUIGoogleAuth(), FUIFacebookAuth()]
         authUI?.providers = providers
         _authHandle = Auth.auth().addStateDidChangeListener({ (auth: Auth, user: User?) in
+            print("1")
             if let activeUser = user {
+                 print("2")
                 if self.user != activeUser {
+                     print("3")
                     self.user = activeUser
                     if let name = user!.email?.components(separatedBy: "@")[0] {
                         displayName = name
@@ -91,6 +103,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                     self.signedInStatus(isSignedIn: true)
                 }
             } else {
+                 print("4")
                 self.activityIndicator.stopAnimating()
                 self.signInButton.isHidden = false
                 self.googleSignIn.isHidden = false
@@ -156,17 +169,17 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
 extension SignInViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         guard error != nil else { return }
-
-      guard let authentication = user.authentication else { return }
-      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+        if user == nil { return }
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                         accessToken: authentication.accessToken)
-      Auth.auth().signIn(with: credential) { (authResult, error) in
-        if let error = error {
-          print(error)
-          return
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            self.performSegue(withIdentifier: "LoggedIn", sender: nil)
         }
-        self.performSegue(withIdentifier: "LoggedIn", sender: nil)
-      }
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
@@ -176,91 +189,65 @@ extension SignInViewController: GIDSignInDelegate {
 
 extension SignInViewController: LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-       //
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        } catch {
+            fatalError()
+        }
     }
     
-    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        /*
-        let fbLoginManager = LoginManager()
-            fbLoginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
-                if let error = error {
-                    print("Failed to login: \(error.localizedDescription)")
-                    return
-                }
-                guard let accessToken = AccessToken.current else {
-                    print("Failed to get access token")
-                    return
-                }
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-                
-                // Perform login by calling Firebase APIs
-                Auth.auth().signIn(with: credential, completion: { (user, error) in
-                    print("2")
-                    if let error = error {
-                        print("Login error: \(error.localizedDescription)")
-                        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(okayAction)
-                        self.present(alertController, animated: true, completion: nil)
-                        return
-                    }
-                    // Present the main view
-                    self.performSegue(withIdentifier: "LoggedIn", sender: nil)
-                })
-         
-            }
-        }
-    */
         guard let accessToken = AccessToken.current else {
             print("Failed to get access token")
             return
         }
-    let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-    Auth.auth().signIn(with: credential) { (authResult, error) in
-      if let error = error {
-        let authError = error as NSError
-        if (self.isMFAEnabled && authError.code == AuthErrorCode.secondFactorRequired.rawValue) {
-          // The user is a multi-factor user. Second factor challenge is required.
-          let resolver = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
-          var displayNameString = ""
-          for tmpFactorInfo in (resolver.hints) {
-            displayNameString += tmpFactorInfo.displayName ?? ""
-            displayNameString += " "
-          }
-          self.showTextInputPrompt(withMessage: "Select factor to sign in\n\(displayNameString)", completionBlock: { userPressedOK, displayName in
-            var selectedHint: PhoneMultiFactorInfo?
-            for tmpFactorInfo in resolver.hints {
-              if (displayName == tmpFactorInfo.displayName) {
-                selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
-              }
-            }
-            PhoneAuthProvider.provider().verifyPhoneNumber(with: selectedHint!, uiDelegate: nil, multiFactorSession: resolver.session) { verificationID, error in
-              if error != nil {
-                print("Multi factor start sign in failed. Error: \(error.debugDescription)")
-              } else {
-                self.showTextInputPrompt(withMessage: "Verification code for \(selectedHint?.displayName ?? "")", completionBlock: { userPressedOK, verificationCode in
-                  let credential: PhoneAuthCredential? = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
-                  let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential!)
-                  resolver.resolveSignIn(with: assertion!) { authResult, error in
-                    if error != nil {
-                      print("Multi factor finalize sign in failed. Error: \(error.debugDescription)")
-                    } else {
-                      self.navigationController?.popViewController(animated: true)
+        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                let authError = error as NSError
+                if (self.isMFAEnabled && authError.code == AuthErrorCode.secondFactorRequired.rawValue) {
+                    // The user is a multi-factor user. Second factor challenge is required.
+                    let resolver = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+                    var displayNameString = ""
+                    for tmpFactorInfo in (resolver.hints) {
+                        displayNameString += tmpFactorInfo.displayName ?? ""
+                        displayNameString += " "
                     }
-                  }
-                })
-              }
+                    self.showTextInputPrompt(withMessage: "Select factor to sign in\n\(displayNameString)", completionBlock: { userPressedOK, displayName in
+                        var selectedHint: PhoneMultiFactorInfo?
+                        for tmpFactorInfo in resolver.hints {
+                            if (displayName == tmpFactorInfo.displayName) {
+                                selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
+                            }
+                        }
+                        PhoneAuthProvider.provider().verifyPhoneNumber(with: selectedHint!, uiDelegate: nil, multiFactorSession: resolver.session) { verificationID, error in
+                            if error != nil {
+                                print("Multi factor start sign in failed. Error: \(error.debugDescription)")
+                            } else {
+                                self.showTextInputPrompt(withMessage: "Verification code for \(selectedHint?.displayName ?? "")", completionBlock: { userPressedOK, verificationCode in
+                                    let credential: PhoneAuthCredential? = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
+                                    let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential!)
+                                    resolver.resolveSignIn(with: assertion!) { authResult, error in
+                                        if error != nil {
+                                            print("Multi factor finalize sign in failed. Error: \(error.debugDescription)")
+                                        } else {
+                                            self.navigationController?.popViewController(animated: true)
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                } else {
+                    self.showMessagePrompt(error.localizedDescription)
+                    return
+                }
+                // ...
+                return
             }
-          })
-        } else {
-          self.showMessagePrompt(error.localizedDescription)
-          return
-        }
-        // ...
-        return
-      }
-        self.performSegue(withIdentifier: "LoggedIn", sender: self.user)
+            
+            self.performSegue(withIdentifier: "LoggedIn", sender: self.user)
         }
     }
 }
