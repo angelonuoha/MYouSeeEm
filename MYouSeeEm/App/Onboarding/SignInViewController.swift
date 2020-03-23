@@ -24,7 +24,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     var user: User?
     var onboardingPictures: [String] = ["first", "second", "third", "fourth"]
-    var isMFAEnabled = false
     
     fileprivate func setupSignInButton() {
         signInButton.layer.cornerRadius = 2.0
@@ -157,5 +156,18 @@ extension SignInViewController: UICollectionViewDelegateFlowLayout {
         let m = w - 1
         return .init(width: m, height: w)
     }
+}
+
+extension FUIAuthBaseViewController{
+    func setFirebaseNavLogo() {
+        let logo = UIImage(named: "MYouSeeEmLogo")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
+  open override func viewWillAppear(_ animated: Bool) {
+    self.navigationItem.leftBarButtonItem = nil
+    setFirebaseNavLogo()
+  }
 }
 

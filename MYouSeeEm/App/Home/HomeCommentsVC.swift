@@ -111,6 +111,7 @@ extension HomeCommentsVC: UITableViewDelegate, UITableViewDataSource {
         cell.commentLabel.text = comment
         cell.dateLabel.text = date
         cell.userName.text = name
+        cell.profileImageView.image = profileImage
         return cell
     }
     

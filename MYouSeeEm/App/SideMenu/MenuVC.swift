@@ -44,7 +44,7 @@ class MenuVC: UIViewController {
     func prepare() {
         guard let profile = self.delegate?.loadProfile() else { return }
         usernameLabel.text = profile.displayName
-        //profileImageView.loadProfileImage(userId: profile.id)
+        profileImageView.image = profileImage
     }
     
     @IBAction func showAboutUs(_ sender: Any) {

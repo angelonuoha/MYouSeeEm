@@ -14,6 +14,7 @@ import LMCSideMenu
 import MessageUI
 
 var currentUser: User?
+var profileImage: UIImage?
 
 class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     var interactor: MenuTransitionInteractor = MenuTransitionInteractor()
@@ -55,11 +56,13 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         loadData()
         prepareMenu()
         setNavLogo()
+        loadProfileImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentUser = profile
+        
     }
     func prepareMenu() {
         
@@ -73,6 +76,17 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+    }
+    
+    func loadProfileImage() {
+        if let photoURL = profile?.photoURL {
+            let urlRequest = URLRequest(url: photoURL)
+            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data else { return }
+                profileImage = UIImage(data: data)
+            }
+            task.resume()
+        }
     }
     
     func downloadCategoriesFromFirebase() {

@@ -1482,8 +1482,8 @@ Cg
                                                                 <constraint firstAttribute="height" constant="40" id="y9u-ZF-mC9"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttl-jT-tdF">
-                                                            <rect key="frame" x="52" y="10" width="224" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttl-jT-tdF">
+                                                            <rect key="frame" x="52" y="5" width="224" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1495,7 +1495,7 @@ Cg
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtA-Zv-4ix">
-                                                            <rect key="frame" x="284" y="14.5" width="56" height="14.5"/>
+                                                            <rect key="frame" x="284" y="9.5" width="56" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.40784313729999999" green="0.43921568630000002" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1504,7 +1504,7 @@ Cg
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="YEz-CO-N6E" secondAttribute="trailing" id="433-mY-ggF"/>
-                                                        <constraint firstItem="Ttl-jT-tdF" firstAttribute="top" secondItem="LeV-3o-kyz" secondAttribute="top" constant="10" id="4br-Da-44A"/>
+                                                        <constraint firstItem="Ttl-jT-tdF" firstAttribute="top" secondItem="LeV-3o-kyz" secondAttribute="top" constant="5" id="4br-Da-44A"/>
                                                         <constraint firstItem="Pvb-6i-2SN" firstAttribute="leading" secondItem="LeV-3o-kyz" secondAttribute="leading" id="4sU-M0-1vU"/>
                                                         <constraint firstItem="YEz-CO-N6E" firstAttribute="leading" secondItem="LeV-3o-kyz" secondAttribute="leading" id="KSC-Ab-UaG"/>
                                                         <constraint firstItem="YEz-CO-N6E" firstAttribute="top" secondItem="Pvb-6i-2SN" secondAttribute="bottom" constant="8" id="Vd8-7K-1IC"/>
@@ -1805,6 +1805,6 @@ Cg
         <image name="profile-default" width="160" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hv3-cP-bUu"/>
+        <segue reference="1mg-Vg-lRc"/>
     </inferredMetricsTieBreakers>
 </document>
