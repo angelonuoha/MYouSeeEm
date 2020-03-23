@@ -53,7 +53,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     }
     
     func setNavLogo() {
-        let logo = UIImage(named: "MYouSeeEmFullLogo")
+        let logo = UIImage(named: "MYouSeeEmLogo")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
