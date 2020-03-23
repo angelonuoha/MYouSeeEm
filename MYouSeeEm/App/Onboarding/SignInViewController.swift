@@ -88,7 +88,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     func configureAuth() {
         let authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
-        let providers: [FUIAuthProvider] = [FUIEmailAuth(), FUIGoogleAuth(), FUIFacebookAuth()]
+        let providers: [FUIAuthProvider] = [FUIEmailAuth()/*, FUIGoogleAuth(), FUIFacebookAuth()*/]
         authUI?.providers = providers
         _authHandle = Auth.auth().addStateDidChangeListener({ (auth: Auth, user: User?) in
             print("1")

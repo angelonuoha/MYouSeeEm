@@ -14,23 +14,20 @@
 //  limitations under the License.
 //
 
-#import "FUIEmailAuthStrings.h"
-
-#import "FUIAuthStrings.h"
+#import "FUIPasswordSignInViewController.h"
+#import <FirebaseAuth/FirebaseAuth.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString *const FUIEmailAuthBundleName = @"FirebaseEmailAuthUI";
+@interface FUIPasswordSignInViewController ()
 
-/** @var kEmailAuthProviderTableName
-    @brief The name of the strings table to search for localized strings.
+/** @property onDismissCallback:
+    @brief Sets an optional custom callback for FUIPasswordSigInViewController during dismissal. This block is NOT set to nil after use, set to nil after using
+        if you wish to avoid circular references.
  */
-NSString *const kEmailAuthProviderTableName = @"FirebaseEmailAuthUI";
-
-NSString *FUIEmailAuthLocalizedString(NSString *key) {
-  return FUILocalizedStringFromTableInBundle(key,
-                                             kEmailAuthProviderTableName,
-                                             FUIEmailAuthBundleName);
-}
+@property(nonatomic, strong, nullable) FIRAuthDataResultCallback onDismissCallback;
 
 NS_ASSUME_NONNULL_END
+
+
+@end
