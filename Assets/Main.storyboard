@@ -88,16 +88,16 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="hXy-Qd-KW5">
-                                <rect key="frame" x="0.0" y="523" width="414" height="137.33333333333337"/>
+                                <rect key="frame" x="0.0" y="523" width="414" height="139.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black Art Museum" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-fw-41U">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="23.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="38.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="35"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UD-ID-HTE">
-                                        <rect key="frame" x="73" y="36.333333333333371" width="268" height="35"/>
+                                        <rect key="frame" x="73" y="51.666666666666629" width="268" height="35"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="gl2-Zi-pd8"/>
@@ -110,21 +110,8 @@
                                             <action selector="signIn:" destination="t8K-tx-dVr" eventType="touchUpInside" id="ZEX-TU-9A6"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5i-lS-jG3" customClass="GIDSignInButton">
-                                        <rect key="frame" x="70" y="84.333333333333371" width="274" height="0.0"/>
-                                        <subviews>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Google Sign-In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHp-Zw-hDz">
-                                                <rect key="frame" x="80" y="18" width="115" height="22"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hgh-zM-7DY">
-                                        <rect key="frame" x="188.66666666666666" y="97.333333333333371" width="37" height="40"/>
+                                        <rect key="frame" x="188.66666666666666" y="99.666666666666629" width="37" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mKB-lr-sHF"/>
                                         </constraints>
@@ -134,8 +121,6 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="uAc-fw-41U" secondAttribute="trailing" id="eMH-xI-BVr"/>
                                     <constraint firstItem="8UD-ID-HTE" firstAttribute="leading" secondItem="hXy-Qd-KW5" secondAttribute="leading" constant="73" id="jT3-YW-bc5"/>
-                                    <constraint firstItem="X5i-lS-jG3" firstAttribute="leading" secondItem="hXy-Qd-KW5" secondAttribute="leading" constant="70" id="jVG-jv-1AQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="X5i-lS-jG3" secondAttribute="trailing" constant="70" id="poQ-TN-1Gj"/>
                                     <constraint firstAttribute="trailing" secondItem="8UD-ID-HTE" secondAttribute="trailing" constant="73" id="r7d-SP-2se"/>
                                     <constraint firstItem="uAc-fw-41U" firstAttribute="leading" secondItem="hXy-Qd-KW5" secondAttribute="leading" id="xzP-eS-Eb2"/>
                                 </constraints>
@@ -156,7 +141,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="hgh-zM-7DY" id="sXH-UX-htp"/>
                         <outlet property="collectionView" destination="Iym-im-4nh" id="oTn-yM-sUk"/>
-                        <outlet property="googleSignIn" destination="X5i-lS-jG3" id="MVh-Ni-ZIZ"/>
                         <outlet property="signInButton" destination="8UD-ID-HTE" id="kqg-fc-aIm"/>
                         <outlet property="stackView" destination="hXy-Qd-KW5" id="9xv-FK-5r0"/>
                         <segue destination="uu0-et-N0m" kind="show" identifier="LoggedIn" id="vaj-OC-ueq"/>
