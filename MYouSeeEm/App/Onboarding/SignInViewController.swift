@@ -123,6 +123,15 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
                         })
                     }
                     task.resume()
+                } else {
+                    self.saveProfilePicture(image: UIImage(named: "profile-default")!, completion: {
+                        self.configureProfilePicture { (imgURL) in
+                            self.profileImageURL = imgURL
+                            self.activityIndicator.stopAnimating()
+                            self.signInButton.isHidden = false
+                            self.performSegue(withIdentifier: "LoggedIn", sender: self.user)
+                        }
+                    })
                 }
             }
         })
