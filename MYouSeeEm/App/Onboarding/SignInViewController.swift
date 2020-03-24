@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 import FirebaseUI
 import FirebaseDatabase
+import FirebaseStorage
 
 var ref: DatabaseReference!
+var storageRef: StorageReference!
 var displayName = "Anonymous"
 var messages = [DataSnapshot]()
+
 
 class SignInViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var signInButton: UIButton!
@@ -24,6 +27,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
     var user: User?
     var onboardingPictures: [String] = ["first", "second", "third", "fourth"]
+    var profileImageURL: String?
     
     fileprivate func setupSignInButton() {
         signInButton.layer.cornerRadius = 2.0
@@ -64,19 +68,16 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         let providers: [FUIAuthProvider] = [FUIEmailAuth(), FUIGoogleAuth(), FUIFacebookAuth()]
         authUI?.providers = providers
         _authHandle = Auth.auth().addStateDidChangeListener({ (auth: Auth, user: User?) in
-            print("1")
             if let activeUser = user {
-                 print("2")
                 if self.user != activeUser {
-                     print("3")
                     self.user = activeUser
+                    self.signedInStatus(isSignedIn: true)
                     if let name = user!.email?.components(separatedBy: "@")[0] {
                         displayName = name
                     }
-                    self.signedInStatus(isSignedIn: true)
+                    self.addProfilePicToDatabase(user: activeUser)
                 }
             } else {
-                 print("4")
                 self.activityIndicator.stopAnimating()
                 self.signInButton.isHidden = false
                 self.signedInStatus(isSignedIn: false)
@@ -84,18 +85,72 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
         })
     }
     
+    func saveProfilePicture(image: UIImage, completion: @escaping () -> Void) {
+        let photoData = UIImage.jpegData(image)
+            let imagePath = "profile_pictures/" + "\(Auth.auth().currentUser!.uid)" + ".jpg"
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            storageRef!.child(imagePath).putData(photoData(0.8)!, metadata: metadata, completion: { (metadata, error) in
+                if let error = error {
+                    print("error uploading: \(error)")
+                    return
+                }
+                print("wrote to storage")
+                let data = storageRef!.child((metadata?.path)!).description
+                ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(data)
+                print("wrote to database")
+                completion()
+            })
+    }
+    
+    func addProfilePicToDatabase(user: User) {
+        ref.child("Users/\(user.uid)").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists() {
+                self.performSegue(withIdentifier: "LoggedIn", sender: self.user)
+                return
+            } else {
+                if let photoURL = user.photoURL {
+                    let urlRequest = URLRequest(url: photoURL)
+                    let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                        guard let data = data else { return }
+                        self.saveProfilePicture(image: UIImage(data: data)!, completion: {
+                            self.configureProfilePicture { (imgURL) in
+                                self.profileImageURL = imgURL
+                                self.activityIndicator.stopAnimating()
+                                self.signInButton.isHidden = false
+                                self.performSegue(withIdentifier: "LoggedIn", sender: self.user)
+                            }
+                        })
+                    }
+                    task.resume()
+                }
+            }
+        })
+    }
+    
+    func configureProfilePicture(completion: @escaping (String?) -> Void) {
+        ref.child("Users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value) { (snapshot) in
+            print("read from database")
+            print(snapshot)
+            let imgURL = snapshot.value as? String
+            self.profileImageURL = imgURL
+            completion(imgURL)
+        }
+    }
+    
     func signedInStatus(isSignedIn: Bool) {
         if isSignedIn {
-            if self.signInButton.isHidden {
-                performSegue(withIdentifier: "LoggedIn", sender: user)
-            }
-            activityIndicator.stopAnimating()
             configureDatabase()
+            configureStorage()
         }
     }
     
     func configureDatabase() {
         ref = Database.database().reference()
+    }
+    
+    func configureStorage() {
+        storageRef = Storage.storage().reference()
     }
     
     func loginSession() {
@@ -105,7 +160,8 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        performSegue(withIdentifier: "LoggedIn", sender: user)
+        //activityIndicator.stopAnimating()
+        //self.signInButton.isHidden = false
     }
     
     
@@ -118,6 +174,7 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? HomeVC {
             vc.profile = sender as? User
+            vc.profileImageURL = profileImageURL
         }
     }
     

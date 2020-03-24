@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 import FirebaseAuth
 import LMCSideMenu
 import MessageUI
 
 var currentUser: User?
-var profileImage: UIImage?
 
 class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     var interactor: MenuTransitionInteractor = MenuTransitionInteractor()
@@ -27,7 +27,9 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var dataSnapshot: [DataSnapshot]! = []
-    
+    var profileImageURL: String?
+    var _refHandle: DatabaseHandle!
+    var profileImage: UIImage?
     var artistSpotlight: [String] = [] {
         didSet {
             categoriesTableView.reloadData()
@@ -49,23 +51,23 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
     }
     
     var profile: User?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("5")
         loadData()
         prepareMenu()
         setNavLogo()
-        loadProfileImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentUser = profile
-        
     }
+    
+    deinit {
+        Auth.removeObserver(_refHandle! as NSObject, forKeyPath: "Users")
+    }
+    
     func prepareMenu() {
-        
         let menuVC = MenuVC.instantiate()
         menuVC.delegate = self
         setupMenu(leftMenu: menuVC, rightMenu: nil)
@@ -77,17 +79,7 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
     }
-    
-    func loadProfileImage() {
-        if let photoURL = profile?.photoURL {
-            let urlRequest = URLRequest(url: photoURL)
-            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                guard let data = data else { return }
-                profileImage = UIImage(data: data)
-            }
-            task.resume()
-        }
-    }
+   
     
     func downloadCategoriesFromFirebase() {
         ref.child("Category").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -129,6 +121,16 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         self.makeLoadingView(visible: true)
         // Load categories - home VC appears first and binding will remove the loading view before all the categories are loaded
         downloadCategoriesFromFirebase()
+    }
+    
+    func readFromStorage(imageURL: String, completion: @escaping (UIImage?) -> Void) {
+        Storage.storage().reference(forURL: imageURL).getData(maxSize: INT64_MAX) { (data, error) in
+            guard let data = data else {
+                return
+            }
+            let image = UIImage(data: data)
+            completion(image)
+        }
     }
     
 }
@@ -187,6 +189,26 @@ extension HomeVC: ProfileMenuDelegate {
     
     func loadProfile() -> User? {
         return profile
+    }
+    
+    func loadProfileImage(completion: @escaping (UIImage?) -> Void) {
+        print("loadprofile")
+        if let profileImageURL = profileImageURL {
+            print(profileImageURL)
+            readFromStorage(imageURL: profileImageURL) { (profileImg) in
+                completion(profileImg)
+            }
+        } else {
+            print("loadprofile2")
+            ref.child("Users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value, with: { (snapshot) in
+                print("continued")
+                let img = snapshot.value as? String
+                print(img)
+                self.readFromStorage(imageURL: img!) { (profileImg) in
+                    print(profileImg)
+                    completion(profileImg)
+                }
+            })}
     }
     
     func showAboutUs() {

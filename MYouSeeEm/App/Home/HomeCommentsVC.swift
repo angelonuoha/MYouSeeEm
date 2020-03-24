@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
+import FirebaseUI
 
 class HomeCommentsVC: UIViewController {
     @IBOutlet weak var commentsTextField: UITextField!
@@ -55,7 +57,6 @@ class HomeCommentsVC: UIViewController {
                 while let rest = enumerator.nextObject() as? DataSnapshot {
                     self.comments.append(rest)
                 }
-                //self.handleComments()
             }){ (error) in
                 print(error.localizedDescription)
             }
@@ -113,16 +114,15 @@ extension HomeCommentsVC: UITableViewDelegate, UITableViewDataSource {
         cell.commentLabel.text = comment
         cell.dateLabel.text = date
         cell.userName.text = name
-        if let photoString = profileURL {
-            let photoURL = URL(string: photoString)!
-            let urlRequest = URLRequest(url: photoURL)
-            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                guard let data = data else { return }
+        if let profileImageURL = profileURL {
+            Storage.storage().reference(forURL: profileImageURL).getData(maxSize: INT64_MAX) { (data, error) in
+                guard let data = data else {
+                    print("error downloading picture")
+                    return
+                }
                 cell.profileImageView.image = UIImage(data: data)
             }
-            task.resume()
         }
-        
         return cell
     }
     
@@ -145,14 +145,16 @@ extension HomeCommentsVC: UITextFieldDelegate {
         if !textField.text!.isEmpty {
             let date = Date()
             let dateString = convertDateToString(date: date)
-            if let currentUser = currentUser {
-                let data = [Constants.MessageFields.comment: textField.text! as String,
-                            Constants.MessageFields.name: currentUser.displayName!,
-                            Constants.MessageFields.date: dateString,
-                            Constants.MessageFields.photoURL: String(describing: currentUser.photoURL!)]
-                sendMessage(data: data)
-            } else {
-                print("error")
+            ref.child("Users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value) { (snapshot) in
+                if let currentUser = currentUser {
+                    let data = [Constants.MessageFields.comment: textField.text! as String,
+                                Constants.MessageFields.name: currentUser.displayName!,
+                                Constants.MessageFields.date: dateString,
+                                Constants.MessageFields.photoURL: snapshot.value as! String]
+                    self.sendMessage(data: data)
+                } else {
+                    print("error")
+                }
             }
             textField.resignFirstResponder()
         }

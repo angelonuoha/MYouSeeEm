@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseUI
+import FirebaseStorage
 
 protocol ProfileMenuDelegate {
     func showAboutUs()
@@ -17,6 +18,7 @@ protocol ProfileMenuDelegate {
     func contactUs()
     func signOut()
     func loadProfile() -> User?
+    func loadProfileImage(completion: @escaping (UIImage?) -> Void)
 }
 
 class MenuVC: UIViewController {
@@ -26,7 +28,6 @@ class MenuVC: UIViewController {
     @IBOutlet weak var aboutUs: UIButton!
     @IBOutlet weak var events: UIButton!
     @IBOutlet weak var signOut: UIButton!
-    
     
     var delegate: ProfileMenuDelegate?
     var profile: User?
@@ -44,7 +45,26 @@ class MenuVC: UIViewController {
     func prepare() {
         guard let profile = self.delegate?.loadProfile() else { return }
         usernameLabel.text = profile.displayName
-        profileImageView.image = profileImage
+        print("menuvc delegate")
+        self.delegate?.loadProfileImage(completion: { (profileImg) in
+            self.profileImageView.image = profileImg
+            print(profileImg)
+        })
+    }
+    
+    func saveProfilePictureToStorage(image: UIImage) {
+        let photoData = UIImage.jpegData(image)
+        let imagePath = "profile_pictures/" + "\(Auth.auth().currentUser!.uid)" + ".jpg"
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            storageRef!.child(imagePath).putData(photoData(0.8)!, metadata: metadata, completion: { (metadata, error) in
+                if let error = error {
+                    print("error uploading: \(error)")
+                    return
+                }
+                let data = storageRef!.child((metadata?.path)!).description
+                ref.child("Users").child(Auth.auth().currentUser!.uid).setValue(data)
+            })
     }
     
     @IBAction func showAboutUs(_ sender: Any) {
@@ -62,6 +82,12 @@ class MenuVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func changeProfilePicture(_ sender: Any) {
+        let controller = UIImagePickerController()
+        controller.delegate = self
+        present(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func contactUs(_ sender: Any) {
         delegate?.contactUs()
         dismiss(animated: true, completion: nil)
@@ -71,6 +97,18 @@ class MenuVC: UIViewController {
         delegate?.signOut()
         dismiss(animated: true, completion: nil)
     }
-    
  
+}
+
+extension MenuVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        profileImageView.image = image
+        saveProfilePictureToStorage(image: image)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import FirebaseUI
 import GoneVisible
 
 class HomeResultsVC: UIViewController {
@@ -254,14 +255,16 @@ extension HomeResultsVC: UITextFieldDelegate {
         if !textField.text!.isEmpty {
             let date = Date()
             let dateString = convertDateToString(date: date)
-            if let currentUser = currentUser {
-                let data = [Constants.MessageFields.comment: textField.text! as String,
-                            Constants.MessageFields.name: currentUser.displayName!,
-                            Constants.MessageFields.date: dateString,
-                            Constants.MessageFields.photoURL: String(describing: currentUser.photoURL!)]
-                sendMessage(data: data)
-            } else {
-                print("error")
+            ref.child("Users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value) { (snapshot) in
+                if let currentUser = currentUser {
+                    let data = [Constants.MessageFields.comment: textField.text! as String,
+                                Constants.MessageFields.name: currentUser.displayName!,
+                                Constants.MessageFields.date: dateString,
+                                Constants.MessageFields.photoURL: snapshot.value as! String]
+                    self.sendMessage(data: data)
+                } else {
+                    print("error")
+                }
             }
             textField.resignFirstResponder()
         }

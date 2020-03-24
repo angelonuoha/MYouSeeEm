@@ -30,7 +30,7 @@ struct Constants {
         static let photoURL = "photoURL"
     }
     
-    struct EventsField  {
+    struct EventsField {
         static let date = "date"
         static let description = "description"
         static let url = "url"
