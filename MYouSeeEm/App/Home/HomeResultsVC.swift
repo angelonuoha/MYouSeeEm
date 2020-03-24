@@ -125,35 +125,6 @@ class HomeResultsVC: UIViewController {
             }
         }
     }
-    /*
-    func handleComments() {
-        if !commentsExists { tableHeightConstraint.constant = 0 }
-        noCommentsLabel.isHidden = commentsExists
-        commentsTableView.isHidden = !commentsExists
-        self.commentsTableView.reloadData()
-    }
-    
-    func listenForComments() {
-        if isArtist {
-            if let artist = artist {
-                _refHandle = ref.child("Comments/Artist Spotlight/\(artist.name)/comments").observe(.childAdded) { (snapshot: DataSnapshot) in
-                    self.comments.append(snapshot)
-                    self.commentsTableView.insertRows(at: [IndexPath(row: self.comments.count-1, section: 0)], with: .automatic)
-                    self.scrollToBottomMessage()
-                }
-            }
-        } else {
-            if let subcategoryDetail = subcategoryDetail {
-                _refHandle = ref.child("Comments/\(subcategoryDetail.category)/\(subcategoryDetail.subcategory)/comments").observe(.childAdded) { (snapshot: DataSnapshot) in
-                    self.comments.append(snapshot)
-                    self.commentsTableView.insertRows(at: [IndexPath(row: self.comments.count-1, section: 0)], with: .automatic)
-                    self.scrollToBottomMessage()
-                }
-            }
-        }
-        
-    }
- */
     
     func hideLabels() {
         authorView.gone()
@@ -286,7 +257,8 @@ extension HomeResultsVC: UITextFieldDelegate {
             if let currentUser = currentUser {
                 let data = [Constants.MessageFields.comment: textField.text! as String,
                             Constants.MessageFields.name: currentUser.displayName!,
-                            Constants.MessageFields.date: dateString]
+                            Constants.MessageFields.date: dateString,
+                            Constants.MessageFields.photoURL: String(describing: currentUser.photoURL!)]
                 sendMessage(data: data)
             } else {
                 print("error")

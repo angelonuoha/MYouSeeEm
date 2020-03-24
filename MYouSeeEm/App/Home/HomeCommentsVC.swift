@@ -89,6 +89,7 @@ class HomeCommentsVC: UIViewController {
         }
     }
     
+    
     func scrollToBottomMessage() {
         if comments.count == 0 { return }
         let bottomMessageIndex = IndexPath(row: commentsTableView.numberOfRows(inSection: 0) - 1, section: 0)
@@ -108,10 +109,20 @@ extension HomeCommentsVC: UITableViewDelegate, UITableViewDataSource {
         let name = comments[Constants.MessageFields.name] ?? "[username]"
         let comment = comments[Constants.MessageFields.comment] ?? "[message]"
         let date = comments[Constants.MessageFields.date] ?? "[date]"
+        let profileURL = comments[Constants.MessageFields.photoURL]
         cell.commentLabel.text = comment
         cell.dateLabel.text = date
         cell.userName.text = name
-        cell.profileImageView.image = profileImage
+        if let photoString = profileURL {
+            let photoURL = URL(string: photoString)!
+            let urlRequest = URLRequest(url: photoURL)
+            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data else { return }
+                cell.profileImageView.image = UIImage(data: data)
+            }
+            task.resume()
+        }
+        
         return cell
     }
     
@@ -137,7 +148,8 @@ extension HomeCommentsVC: UITextFieldDelegate {
             if let currentUser = currentUser {
                 let data = [Constants.MessageFields.comment: textField.text! as String,
                             Constants.MessageFields.name: currentUser.displayName!,
-                            Constants.MessageFields.date: dateString]
+                            Constants.MessageFields.date: dateString,
+                            Constants.MessageFields.photoURL: String(describing: currentUser.photoURL!)]
                 sendMessage(data: data)
             } else {
                 print("error")

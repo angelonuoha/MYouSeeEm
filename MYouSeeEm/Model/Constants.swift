@@ -27,6 +27,7 @@ struct Constants {
         static let name = "name"
         static let comment = "comment"
         static let date = "date"
+        static let photoURL = "photoURL"
     }
     
     struct EventsField  {

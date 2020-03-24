@@ -113,7 +113,7 @@
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;In education, the element of race does not enter.&quot; - Carter G Woodson" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lW3-eS-cxF">
                                                         <rect key="frame" x="25" y="113" width="325" height="133"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="25"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1538,15 +1538,15 @@ Cg
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-1D-oVa">
-                                <rect key="frame" x="10" y="616" width="363.5" height="34"/>
+                                <rect key="frame" x="10" y="616" width="355" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Leave a comment" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYC-Uw-zEo" userLabel="TextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="307.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="34"/>
                                         <fontDescription key="fontDescription" name="RobotoMono-Regular" family="Roboto Mono" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKH-TH-YiC">
-                                        <rect key="frame" x="317.5" y="0.0" width="46" height="34"/>
+                                        <rect key="frame" x="309" y="0.0" width="46" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="fNe-pL-kv6"/>
                                         </constraints>
@@ -1569,7 +1569,7 @@ Cg
                             <constraint firstItem="O6n-1D-oVa" firstAttribute="leading" secondItem="ayw-kD-ppP" secondAttribute="leading" constant="10" id="7r3-Ne-v32"/>
                             <constraint firstItem="ayw-kD-ppP" firstAttribute="trailing" secondItem="uge-hh-EtY" secondAttribute="trailing" id="Ira-rS-cfh"/>
                             <constraint firstItem="ayw-kD-ppP" firstAttribute="top" secondItem="uge-hh-EtY" secondAttribute="top" constant="44" id="Y1P-TK-i94"/>
-                            <constraint firstItem="ayw-kD-ppP" firstAttribute="trailing" secondItem="O6n-1D-oVa" secondAttribute="trailing" constant="1.5" id="YuF-mw-RAM"/>
+                            <constraint firstItem="ayw-kD-ppP" firstAttribute="trailing" secondItem="O6n-1D-oVa" secondAttribute="trailing" constant="10" id="YuF-mw-RAM"/>
                             <constraint firstItem="uge-hh-EtY" firstAttribute="leading" secondItem="JLc-RW-AK2" secondAttribute="leading" id="a4e-0T-H9X"/>
                             <constraint firstAttribute="trailing" secondItem="uge-hh-EtY" secondAttribute="trailing" id="iaJ-Sq-O28"/>
                             <constraint firstItem="ayw-kD-ppP" firstAttribute="bottom" secondItem="O6n-1D-oVa" secondAttribute="bottom" constant="17" id="kkb-P5-yR1"/>
