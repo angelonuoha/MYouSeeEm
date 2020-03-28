@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>19736280311-3cb8k4fcg4q8o72aosfnp5e4auipjlei.apps.googleusercontent.com</string>
+	<string>19736280311-2eoltj2gncpsg8usi0msu9au8nvsqsgv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.19736280311-3cb8k4fcg4q8o72aosfnp5e4auipjlei</string>
+	<string>com.googleusercontent.apps.19736280311-2eoltj2gncpsg8usi0msu9au8nvsqsgv</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBYHbUvLyfHZahdbNDbGFhC2oPDrcm423o</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.myouseeem.myouseeem</string>
+	<string>com.myouseeem.myouseeembundle</string>
 	<key>PROJECT_ID</key>
 	<string>myouseeem-eb4f1</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:19736280311:ios:d88033ca65223972c567f2</string>
+	<string>1:19736280311:ios:6d05851d358ecdbec567f2</string>
 	<key>DATABASE_URL</key>
 	<string>https://myouseeem-eb4f1.firebaseio.com</string>
 </dict>

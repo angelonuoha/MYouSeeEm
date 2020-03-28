@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B030161241DC099001DF5E9 /* HomeCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */; };
+		0B33AE8E242FE2820052321F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B33AE8D242FE2810052321F /* GoogleService-Info.plist */; };
 		0B39D80424206D7F00F406B3 /* SignInViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39D80324206D7F00F406B3 /* SignInViewCell.swift */; };
 		0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917AA240E028A0046A505 /* DotsProgressView.swift */; };
 		0B4917BC240E028C0046A505 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917AE240E028A0046A505 /* RoundImageView.swift */; };
@@ -26,7 +27,6 @@
 		0BE461FE240C8569005A7893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BE461FC240C8569005A7893 /* LaunchScreen.storyboard */; };
 		0BE46209240C8569005A7893 /* MYouSeeEmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46208240C8569005A7893 /* MYouSeeEmTests.swift */; };
 		0BE46214240C8569005A7893 /* MYouSeeEmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46213240C8569005A7893 /* MYouSeeEmUITests.swift */; };
-		0BE46222240C85C8005A7893 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BE46221240C85C8005A7893 /* GoogleService-Info.plist */; };
 		0BE46226240CC579005A7893 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46225240CC579005A7893 /* HomeVC.swift */; };
 		0BE46228240CC5F5005A7893 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE46227240CC5F5005A7893 /* HomeCell.swift */; };
 		0BE4622D240CD07E005A7893 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4622C240CD07E005A7893 /* Constants.swift */; };
@@ -68,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentsVC.swift; sourceTree = "<group>"; };
+		0B33AE8D242FE2810052321F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B39D80324206D7F00F406B3 /* SignInViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewCell.swift; sourceTree = "<group>"; };
 		0B4917AA240E028A0046A505 /* DotsProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotsProgressView.swift; sourceTree = "<group>"; };
 		0B4917AE240E028A0046A505 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		0BE4620F240C8569005A7893 /* MYouSeeEmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MYouSeeEmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE46213240C8569005A7893 /* MYouSeeEmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYouSeeEmUITests.swift; sourceTree = "<group>"; };
 		0BE46215240C8569005A7893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0BE46221240C85C8005A7893 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0BE46225240CC579005A7893 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		0BE46227240CC5F5005A7893 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCell.swift; path = ../../View/HomeCell.swift; sourceTree = "<group>"; };
 		0BE4622C240CD07E005A7893 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 			children = (
 				0BE461F1240C8566005A7893 /* AppDelegate.swift */,
 				0BE461F3240C8566005A7893 /* SceneDelegate.swift */,
-				0BE46221240C85C8005A7893 /* GoogleService-Info.plist */,
+				0B33AE8D242FE2810052321F /* GoogleService-Info.plist */,
 				0BE461FF240C8569005A7893 /* Info.plist */,
 				1ACB051C241020E900093AA0 /* App */,
 				0B4917C6240E02A60046A505 /* CustomViews */,
@@ -415,9 +415,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BE461FE240C8569005A7893 /* LaunchScreen.storyboard in Resources */,
+				0B33AE8E242FE2820052321F /* GoogleService-Info.plist in Resources */,
 				0BE4624B240CD623005A7893 /* Main.storyboard in Resources */,
 				0BE461FB240C8569005A7893 /* Assets.xcassets in Resources */,
-				0BE46222240C85C8005A7893 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,9 +699,10 @@
 			baseConfigurationReference = 73FCB475416DB7320A6CDED3 /* Pods-MYouSeeEm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
-				DEVELOPMENT_TEAM = TS5Y4SZG34;
+				DEVELOPMENT_TEAM = V5WVTDWCPM;
 				INFOPLIST_FILE = MYouSeeEm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -790,8 +791,9 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myouseeem.myouseeem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myouseeem.myouseeembundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -802,9 +804,10 @@
 			baseConfigurationReference = 5F983AA56B471ADF0CA0FC29 /* Pods-MYouSeeEm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
-				DEVELOPMENT_TEAM = TS5Y4SZG34;
+				DEVELOPMENT_TEAM = V5WVTDWCPM;
 				INFOPLIST_FILE = MYouSeeEm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -893,8 +896,9 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.myouseeem.myouseeem;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myouseeem.myouseeembundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
