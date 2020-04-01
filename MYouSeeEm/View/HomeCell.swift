@@ -61,7 +61,7 @@ class HomeCell: UITableViewCell {
     }
     func downloadSubcategoriesFromFirebase(category: String?) {
         if let category = category {
-            ref.child("Category/\(category)/").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("Category/\(category)/").observeSingleEvent(of: .value, with: { (snapshot) in
                 self.data = snapshot.children.allObjects as [AnyObject]
                 self.categoryData = snapshot
                 let enumerator = snapshot.children
@@ -123,9 +123,12 @@ extension HomeCell: UICollectionViewDataSource {
             let superCategory = category!
             let selectedCategory = subcategories[indexPath.row]
             let categorySnapshot = (categoryData.value as! [String: [String: [String: String]]])
+            print(selectedCategory)
+            print(categorySnapshot)
             let index = categorySnapshot.index(forKey: selectedCategory)
             let categoryData = categorySnapshot[index!].value
-            let categoryNames = Array(categoryData.keys)
+            let categoryNames = Array(categoryData.keys).sorted()
+            print(categoryNames)
             let categoryObject = CategoryModel(categoryData: categoryData, names: categoryNames, superCategory: superCategory, category: selectedCategory)
             self.delegate?.showSubcategories(subcategory: categoryObject)
         }

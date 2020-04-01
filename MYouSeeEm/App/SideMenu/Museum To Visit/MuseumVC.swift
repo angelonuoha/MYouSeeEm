@@ -12,6 +12,7 @@ import UIKit
 class MuseumVC: UIViewController {
     
     var museumData: MuseumModel?
+    var titlesForSection: Array<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class MuseumVC: UIViewController {
     func prepare() {
         if let museumData = museumData {
             self.title = "\(museumData.geography)"
+            titlesForSection = (Array<String>(museumData.museums.keys)).sorted()
         }
     }
     
@@ -31,17 +33,13 @@ extension MuseumVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let museumData = museumData {
-            let titlesForSection = Array<String>(museumData.museums.keys)
-            return titlesForSection[section]
-        }
-        return ""
+        return titlesForSection[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let museumData = museumData {
-            let rowsForSection = Array<[String: String]>(museumData.museums.values)
-            return rowsForSection[section].count
+            let index = museumData.museums.index(forKey: titlesForSection[section])
+            return museumData.museums[index!].value.count
         }
         return 0
     }
@@ -49,12 +47,12 @@ extension MuseumVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MuseumTableViewCell", for: indexPath) as! MuseumTableViewCell
         if let museumData = museumData {
-            let rowsForSection = Array<[String: String]>(museumData.museums.values)
-            let museumValue = Array<String>(rowsForSection[indexPath.section].values)
-            let museumKey = Array<String>(rowsForSection[indexPath.section].keys)
-            print(rowsForSection)
-            cell.museumName.text = museumKey[indexPath.row]
-            cell.museumURL = museumValue[indexPath.row]
+            let index = museumData.museums.index(forKey: titlesForSection[indexPath.section])
+            let museum = museumData.museums[index!].value
+            let museumKeys = (Array<String>(museum.keys)).sorted()
+            let keyIndex = museum.index(forKey: museumKeys[indexPath.row])
+            cell.museumName.text = museumKeys[indexPath.row]
+            cell.museumURL = museum[keyIndex!].value
         }
         return cell
     }

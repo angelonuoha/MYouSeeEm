@@ -30,7 +30,7 @@ class MuseumsToVisit: UIViewController {
     }
     
     func downloadMuseumsFromFirebase() {
-        ref.child("Category/Museums to Visit/").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Category/Museums to Visit/").observeSingleEvent(of: .value, with: { (snapshot) in
             self.data = snapshot.children.allObjects as [AnyObject]
             self.categoryData = snapshot
             let enumerator = snapshot.children
