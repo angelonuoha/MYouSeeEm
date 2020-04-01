@@ -1222,7 +1222,7 @@ Cg
                                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QHZ-1o-sus">
                                                                         <rect key="frame" x="5" y="0.0" width="369" height="20.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fae-su-bDK">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fae-su-bDK">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="60" id="shM-Y9-SgI"/>
