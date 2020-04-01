@@ -50,11 +50,21 @@ extension MuseumVC: UITableViewDelegate, UITableViewDataSource {
             let index = museumData.museums.index(forKey: titlesForSection[indexPath.section])
             let museum = museumData.museums[index!].value
             let museumKeys = (Array<String>(museum.keys)).sorted()
-            let keyIndex = museum.index(forKey: museumKeys[indexPath.row])
             cell.museumName.text = museumKeys[indexPath.row]
-            cell.museumURL = museum[keyIndex!].value
         }
         return cell
     }
-   
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MuseumTableViewCell", for: indexPath) as! MuseumTableViewCell
+        if let museumData = museumData {
+            let index = museumData.museums.index(forKey: titlesForSection[indexPath.section])
+            let museum = museumData.museums[index!].value
+            let museumKeys = (Array<String>(museum.keys)).sorted()
+            let keyIndex = museum.index(forKey: museumKeys[indexPath.row])
+            cell.museumURL = museum[keyIndex!].value
+        }
+    }
+    
+
 }
