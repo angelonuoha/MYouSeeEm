@@ -12,6 +12,8 @@ import FirebaseDatabase
 class MuseumsToVisit: UIViewController {
     @IBOutlet weak var geographyCollectionView: UICollectionView!
     @IBOutlet weak var museumTextView: UITextView!
+    @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +80,18 @@ extension MuseumsToVisit: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let w = collectionView.bounds.width
-        let side = (w - 50.0) / 2.0
-        return .init(width: side, height: side)
+        let w = self.view.bounds.width
+        let h = self.view.bounds.height
+        let hside = h / 3.6
+        print(w)
+        if w > 400 {
+            let wside = (w - 50) / 2.0
+            collectionViewConstraint.constant = 0
+            return .init(width: wside, height: wside)
+        } else {
+            let wside = (w - 40) / 2
+            collectionViewConstraint.constant = -20
+            return .init(width: wside, height: hside)
+        }
     }
 }

@@ -48,7 +48,6 @@ class MenuVC: UIViewController {
         print("menuvc delegate")
         self.delegate?.loadProfileImage(completion: { (profileImg) in
             self.profileImageView.image = profileImg
-            print(profileImg)
         })
     }
     

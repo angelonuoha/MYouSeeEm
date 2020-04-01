@@ -139,8 +139,6 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     
     func configureProfilePicture(completion: @escaping (String?) -> Void) {
         ref.child("Users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value) { (snapshot) in
-            print("read from database")
-            print(snapshot)
             let imgURL = snapshot.value as? String
             self.profileImageURL = imgURL
             completion(imgURL)
@@ -164,13 +162,14 @@ class SignInViewController: UIViewController, FUIAuthDelegate {
     
     func loginSession() {
         activityIndicator.stopAnimating()
-        let authViewController = FUIAuth.defaultAuthUI()!.authViewController()
-        present(authViewController, animated: true, completion: nil)
+        let authUI = FUIAuth.defaultAuthUI()!
+        let authViewController = MYouSeeEmAuthViewController(authUI: authUI)
+        let navc = UINavigationController(rootViewController: authViewController)
+        present(navc, animated: true, completion: nil)
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        //activityIndicator.stopAnimating()
-        //self.signInButton.isHidden = false
+
     }
     
     
@@ -222,18 +221,5 @@ extension SignInViewController: UICollectionViewDelegateFlowLayout {
         let m = w - 1
         return .init(width: m, height: w)
     }
-}
-
-extension FUIAuthBaseViewController{
-    func setFirebaseNavLogo() {
-        let logo = UIImage(named: "MYouSeeEmLogo")
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
-    }
-  open override func viewWillAppear(_ animated: Bool) {
-    self.navigationItem.leftBarButtonItem = nil
-    setFirebaseNavLogo()
-  }
 }
 

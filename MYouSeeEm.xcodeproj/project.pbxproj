@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B030161241DC099001DF5E9 /* HomeCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */; };
+		0B1475072435253200567A78 /* MYouSeeEmAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1475062435253200567A78 /* MYouSeeEmAuthViewController.swift */; };
 		0B33AE8E242FE2820052321F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B33AE8D242FE2810052321F /* GoogleService-Info.plist */; };
 		0B39D80424206D7F00F406B3 /* SignInViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39D80324206D7F00F406B3 /* SignInViewCell.swift */; };
 		0B4917B8240E028C0046A505 /* DotsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4917AA240E028A0046A505 /* DotsProgressView.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		0B030160241DC099001DF5E9 /* HomeCommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentsVC.swift; sourceTree = "<group>"; };
+		0B1475062435253200567A78 /* MYouSeeEmAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYouSeeEmAuthViewController.swift; sourceTree = "<group>"; };
 		0B33AE8D242FE2810052321F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0B39D80324206D7F00F406B3 /* SignInViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewCell.swift; sourceTree = "<group>"; };
 		0B4917AA240E028A0046A505 /* DotsProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotsProgressView.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				0BE46230240CD0C9005A7893 /* SignInViewController.swift */,
 				0B39D80324206D7F00F406B3 /* SignInViewCell.swift */,
+				0B1475062435253200567A78 /* MYouSeeEmAuthViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				0B4917BC240E028C0046A505 /* RoundImageView.swift in Sources */,
 				0BE461F4240C8566005A7893 /* SceneDelegate.swift in Sources */,
 				1ACB05342411984A00093AA0 /* HomeCommentsViewCell.swift in Sources */,
+				0B1475072435253200567A78 /* MYouSeeEmAuthViewController.swift in Sources */,
 				0B4917BE240E028C0046A505 /* ShadowCellView.swift in Sources */,
 				0BE46228240CC5F5005A7893 /* HomeCell.swift in Sources */,
 				0B4917EA241089A10046A505 /* ArtistModel.swift in Sources */,

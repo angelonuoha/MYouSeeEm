@@ -41,6 +41,7 @@ class HomeResultsVC: UIViewController {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var commentsView: UIView!
     @IBOutlet weak var musicHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shadowViewTopConstraint: NSLayoutConstraint!
     
     var subcategoryDetail: SubcategoryModel?
     var artist: ArtistModel?
@@ -100,6 +101,9 @@ class HomeResultsVC: UIViewController {
         }
         downloadComments()
         hideEmptyValues()
+        if self.view.frame.width < 400 {
+            shadowViewTopConstraint.constant = 50
+        }
     }
     
     func downloadComments() {
