@@ -75,10 +75,11 @@ class HomeResultsVC: UIViewController {
         if isArtist {
             if let artist = artist {
                 self.title = "\(artist.name)"
+                let gender = isGender(gender: artist.gender)
                 artistProfileImage?.image = returnArtistImage(artist: artist.name)
                 artistDescription?.attributedText = addDescription(description: artist.description)
                 additionalInfo?.text = artist.additionalInfo
-                songLabel?.text = "Checkout their song in the MYouSeeEm Playlist: \(artist.song)"
+                songLabel?.text = "Checkout \(gender) song in the MYouSeeEm Playlist: \(artist.song)"
                 artistDescription.isScrollEnabled = true
                 artistDescription.isEditable = false
             }
@@ -136,6 +137,14 @@ class HomeResultsVC: UIViewController {
         stackView.spacing = 0
         if additionalInfo.text == "" {
             additionalInfoHeightConstraint.constant = 0
+        }
+    }
+    
+    func isGender(gender: String) -> String {
+        if gender.lowercased() == "female" {
+            return "her"
+        } else {
+            return "his"
         }
     }
     

@@ -14,4 +14,5 @@ struct ArtistModel {
     let description: String
     let additionalInfo: String
     let song: String
+    let gender: String
 }

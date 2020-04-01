@@ -200,10 +200,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0C-dl-ADZ">
-                                <rect key="frame" x="0.0" y="225.5" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="225.5" width="414" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="nZ1-yi-5fz">
-                                        <rect key="frame" x="0.0" y="1" width="414" height="198"/>
+                                        <rect key="frame" x="0.0" y="1" width="414" height="298"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9g-9V-clO">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -230,7 +230,7 @@
                                                 <rect key="frame" x="0.0" y="50" width="414" height="48.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKX-Zo-CPO">
-                                                        <rect key="frame" x="20" y="7.5" width="374" height="33"/>
+                                                        <rect key="frame" x="20" y="8" width="374" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Events">
                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -268,11 +268,53 @@
                                                     <constraint firstItem="6Zz-8x-SEX" firstAttribute="centerY" secondItem="b6Z-0Q-yfO" secondAttribute="centerY" id="gWV-hb-idZ"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YB2-y8-ndN">
+                                                <rect key="frame" x="0.0" y="149.5" width="414" height="49"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lC-cG-Hy5">
+                                                        <rect key="frame" x="20" y="8" width="374" height="33"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Apple Music Playlist">
+                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="appleMusic:" destination="XM0-xQ-8By" eventType="touchUpInside" id="AKb-V0-vYz"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="8lC-cG-Hy5" firstAttribute="leading" secondItem="YB2-y8-ndN" secondAttribute="leading" constant="20" id="AMT-2H-FBA"/>
+                                                    <constraint firstItem="8lC-cG-Hy5" firstAttribute="centerY" secondItem="YB2-y8-ndN" secondAttribute="centerY" id="SIZ-7g-z2V"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8lC-cG-Hy5" secondAttribute="trailing" constant="20" id="kL5-W5-hHt"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jd-lD-UXV">
+                                                <rect key="frame" x="0.0" y="199.5" width="414" height="48.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fr-qT-7ME">
+                                                        <rect key="frame" x="20" y="8" width="374" height="33"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Spotify Playlist">
+                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="spotify:" destination="XM0-xQ-8By" eventType="touchUpInside" id="kdO-4S-jOe"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="4fr-qT-7ME" secondAttribute="trailing" constant="20" id="EwJ-gs-mmH"/>
+                                                    <constraint firstItem="4fr-qT-7ME" firstAttribute="centerY" secondItem="6jd-lD-UXV" secondAttribute="centerY" id="QGx-yl-8vY"/>
+                                                    <constraint firstItem="4fr-qT-7ME" firstAttribute="leading" secondItem="6jd-lD-UXV" secondAttribute="leading" constant="20" id="WLV-sD-6Or"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJW-bD-A9R">
-                                                <rect key="frame" x="0.0" y="149.5" width="414" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="249" width="414" height="49"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACk-vb-Iha">
-                                                        <rect key="frame" x="20" y="7.5" width="374" height="33"/>
+                                                        <rect key="frame" x="20" y="8" width="374" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Contact Us">
                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -295,7 +337,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.85040713030000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="38R-NN-5nW"/>
+                                    <constraint firstAttribute="height" constant="300" id="38R-NN-5nW"/>
                                     <constraint firstItem="nZ1-yi-5fz" firstAttribute="top" secondItem="F0C-dl-ADZ" secondAttribute="top" constant="1" id="GpZ-be-gqH"/>
                                     <constraint firstAttribute="bottom" secondItem="nZ1-yi-5fz" secondAttribute="bottom" constant="1" id="XHH-b2-d83"/>
                                     <constraint firstItem="nZ1-yi-5fz" firstAttribute="leading" secondItem="F0C-dl-ADZ" secondAttribute="leading" id="stf-UD-iuv"/>
@@ -465,7 +507,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.69950978990000001" green="0.55582362870000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="THd-1K-wgV" firstAttribute="top" secondItem="gz9-6m-BAG" secondAttribute="top" id="9PP-02-wA8"/>
                             <constraint firstItem="AVD-xw-JpX" firstAttribute="leading" secondItem="gz9-6m-BAG" secondAttribute="leading" id="CrX-JM-Xwx"/>
@@ -1286,7 +1328,7 @@ Cg
                                                                     <constraint firstAttribute="trailing" secondItem="1IA-vI-agk" secondAttribute="trailing" id="zox-Ud-Lrn"/>
                                                                 </constraints>
                                                             </view>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" editable="NO" text="Description:" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BT-j2-MM2">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" editable="NO" text="Artist Bio:" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BT-j2-MM2">
                                                                 <rect key="frame" x="0.0" y="75.5" width="374" height="154"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>

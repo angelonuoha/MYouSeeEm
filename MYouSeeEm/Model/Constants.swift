@@ -13,6 +13,7 @@ struct Constants {
         static let song = "song"
         static let description = "description"
         static let additionalInfo = "additionalInfo"
+        static let gender = "gender"
     }
     
     struct SubcategoryData {

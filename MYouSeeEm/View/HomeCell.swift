@@ -115,8 +115,8 @@ extension HomeCell: UICollectionViewDataSource {
             let selectedArtist = artists[indexPath.row]
             let artistSnapshot = data[indexPath.row] as! DataSnapshot
             let artistData = artistSnapshot.value as! [String: String]
-            if let song = artistData[Constants.ArtistSpotlight.song], let artistDescription = artistData[Constants.ArtistSpotlight.description], let additionalInfo = artistData[Constants.ArtistSpotlight.additionalInfo] {
-                let artist = ArtistModel(name: selectedArtist, description: artistDescription, additionalInfo: additionalInfo, song: song)
+            if let song = artistData[Constants.ArtistSpotlight.song], let artistDescription = artistData[Constants.ArtistSpotlight.description], let additionalInfo = artistData[Constants.ArtistSpotlight.additionalInfo], let gender = artistData[Constants.ArtistSpotlight.gender] {
+                let artist = ArtistModel(name: selectedArtist, description: artistDescription, additionalInfo: additionalInfo, song: song, gender: gender)
                 self.delegate?.showArtist(artist: artist)
             }
         } else {
