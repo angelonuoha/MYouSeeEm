@@ -30,7 +30,7 @@ class MuseumsToVisit: UIViewController {
     }
     
     func downloadMuseumsFromFirebase() {
-        ref.child("Category/Museums to Visit/").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Category/Museums to Visit/").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
             self.data = snapshot.children.allObjects as [AnyObject]
             self.categoryData = snapshot
             let enumerator = snapshot.children
@@ -63,7 +63,7 @@ extension MuseumsToVisit: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedGeography = subcategories[indexPath.row]
-        let museumSnapshot = categoryData.value as! [String: [String]]
+        let museumSnapshot = categoryData.value as! [String: [String: [String: String]]]
         let index = museumSnapshot.index(forKey: selectedGeography)
         let museumData = MuseumModel(geography: selectedGeography, museums: museumSnapshot[index!].value)
         performSegue(withIdentifier: "ShowMuseums", sender: museumData)

@@ -10,5 +10,5 @@ import Foundation
 
 struct MuseumModel {
     let geography: String
-    let museums: [String]
+    let museums: [String: [String: String]]
 }

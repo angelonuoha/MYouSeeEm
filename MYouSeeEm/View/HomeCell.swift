@@ -60,9 +60,8 @@ class HomeCell: UITableViewCell {
         self.downloadSubcategoriesFromFirebase(category: category)
     }
     func downloadSubcategoriesFromFirebase(category: String?) {
-        
         if let category = category {
-            ref.child("Category/\(category)/").observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("Category/\(category)/").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
                 self.data = snapshot.children.allObjects as [AnyObject]
                 self.categoryData = snapshot
                 let enumerator = snapshot.children
@@ -75,6 +74,8 @@ class HomeCell: UITableViewCell {
                     }
                 }
                 self.delegate?.makeLoadingView(visible: false)
+                self.artists = self.artists.sorted()
+                self.subcategories = self.subcategories.sorted()
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -121,7 +122,7 @@ extension HomeCell: UICollectionViewDataSource {
         } else {
             let superCategory = category!
             let selectedCategory = subcategories[indexPath.row]
-            let categorySnapshot = categoryData.value as! [String: [String: [String: String]]]
+            let categorySnapshot = (categoryData.value as! [String: [String: [String: String]]])
             let index = categorySnapshot.index(forKey: selectedCategory)
             let categoryData = categorySnapshot[index!].value
             let categoryNames = Array(categoryData.keys)

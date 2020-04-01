@@ -26,15 +26,35 @@ class MuseumVC: UIViewController {
     
 }
 extension MuseumVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return museumData?.museums.count ?? 0
-        
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let museumData = museumData {
+            let titlesForSection = Array<String>(museumData.museums.keys)
+            return titlesForSection[section]
+        }
+        return ""
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let museumData = museumData {
+            let rowsForSection = Array<[String: String]>(museumData.museums.values)
+            return rowsForSection[section].count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MuseumTableViewCell", for: indexPath) as! MuseumTableViewCell
         if let museumData = museumData {
-            cell.museumName.text = museumData.museums[indexPath.row]
+            let rowsForSection = Array<[String: String]>(museumData.museums.values)
+            let museumValue = Array<String>(rowsForSection[indexPath.section].values)
+            let museumKey = Array<String>(rowsForSection[indexPath.section].keys)
+            print(rowsForSection)
+            cell.museumName.text = museumKey[indexPath.row]
+            cell.museumURL = museumValue[indexPath.row]
         }
         return cell
     }

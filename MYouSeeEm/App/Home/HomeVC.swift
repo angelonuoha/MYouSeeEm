@@ -85,7 +85,6 @@ class HomeVC: UIViewController, LMCSideMenuCenterControllerProtocol {
         ref.child("Category").observeSingleEvent(of: .value, with: { (snapshot) in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
-                
                 let keys = rest.key
                 if keys == "Artist Spotlight" {
                     self.artistSpotlight.append(keys)
@@ -199,13 +198,9 @@ extension HomeVC: ProfileMenuDelegate {
                 completion(profileImg)
             }
         } else {
-            print("loadprofile2")
             ref.child("Users/\(Auth.auth().currentUser!.uid)").observeSingleEvent(of: .value, with: { (snapshot) in
-                print("continued")
                 let img = snapshot.value as? String
-                print(img)
                 self.readFromStorage(imageURL: img!) { (profileImg) in
-                    print(profileImg)
                     completion(profileImg)
                 }
             })}
