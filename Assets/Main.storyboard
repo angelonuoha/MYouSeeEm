@@ -1171,9 +1171,33 @@ Cg
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="yKe-9S-QIU">
                                                         <rect key="frame" x="5" y="5" width="345" height="334.5"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="p2f-3G-lU1">
-                                                                <rect key="frame" x="34" y="0.0" width="277" height="279.5"/>
-                                                            </imageView>
+                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gn4-aU-7bt">
+                                                                <rect key="frame" x="14" y="0.0" width="317" height="246"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="p2f-3G-lU1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="317" height="246"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="p2f-3G-lU1" firstAttribute="bottom" secondItem="b1k-gd-L9G" secondAttribute="bottom" id="7JL-Rh-Jra"/>
+                                                                    <constraint firstItem="p2f-3G-lU1" firstAttribute="top" secondItem="Gn4-aU-7bt" secondAttribute="top" id="ivM-we-Vdc"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="p2f-3G-lU1" secondAttribute="trailing" id="kcp-H3-Sed"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="p2f-3G-lU1" secondAttribute="bottom" id="uh8-o1-VqA"/>
+                                                                    <constraint firstItem="p2f-3G-lU1" firstAttribute="centerX" secondItem="Gn4-aU-7bt" secondAttribute="centerX" id="yMf-In-nHS"/>
+                                                                    <constraint firstItem="p2f-3G-lU1" firstAttribute="leading" secondItem="Gn4-aU-7bt" secondAttribute="leading" id="z0V-dC-Rk8"/>
+                                                                </constraints>
+                                                                <viewLayoutGuide key="contentLayoutGuide" id="NtN-4q-y8p"/>
+                                                                <viewLayoutGuide key="frameLayoutGuide" id="b1k-gd-L9G"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="wBr-PS-B58" id="DUu-yI-V1B"/>
+                                                                </connections>
+                                                            </scrollView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t66-9l-e3c">
+                                                                <rect key="frame" x="150" y="253" width="45.5" height="26.5"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRF-h9-lXm">
                                                                 <rect key="frame" x="0.0" y="286.5" width="345" height="20.5"/>
                                                                 <constraints>
@@ -1263,17 +1287,17 @@ Cg
                                                                         <rect key="frame" x="5" y="0.0" width="330" height="20.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fae-su-bDK">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="48" height="20.5"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="60" id="shM-Y9-SgI"/>
+                                                                                    <constraint firstAttribute="width" constant="48" id="shM-Y9-SgI"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53e-ra-Fud">
-                                                                                <rect key="frame" x="65" y="0.0" width="265" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53e-ra-Fud">
+                                                                                <rect key="frame" x="53" y="0.5" width="277" height="20"/>
+                                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -1298,16 +1322,16 @@ Cg
                                                                         <rect key="frame" x="5" y="0.5" width="330" height="20"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram Handle:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLv-MN-eCU">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="20"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="145" height="20"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="150" id="Pw5-gz-TS8"/>
+                                                                                    <constraint firstAttribute="width" constant="145" id="Pw5-gz-TS8"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="IG Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlH-A9-ypF">
-                                                                                <rect key="frame" x="155" y="0.0" width="175" height="20"/>
+                                                                                <rect key="frame" x="150" y="0.0" width="180" height="20"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,12 +1501,14 @@ Cg
                         <outlet property="authorLabel" destination="fae-su-bDK" id="08C-Y4-6RE"/>
                         <outlet property="authorView" destination="1dp-1O-F28" id="9c5-Cv-B0h"/>
                         <outlet property="commentTextField" destination="bae-II-bdq" id="Kiq-3x-jOd"/>
+                        <outlet property="commentsConstraint" destination="bbV-Ft-F0h" id="0n9-BF-bmt"/>
                         <outlet property="commentsCount" destination="HZC-vN-UsE" id="trl-78-wRy"/>
                         <outlet property="commentsTableView" destination="uge-hh-EtY" id="SwI-2v-91N"/>
                         <outlet property="commentsView" destination="v2z-2Y-SGA" id="C0D-Fo-RMY"/>
                         <outlet property="date" destination="qRF-h9-lXm" id="ben-bf-m9p"/>
                         <outlet property="dateHeightConstraint" destination="GJ7-zU-De8" id="hJC-Dy-JoH"/>
                         <outlet property="descriptionHeightConstraint" destination="a8h-jB-GLu" id="a1E-AW-e7a"/>
+                        <outlet property="imageScrollView" destination="Gn4-aU-7bt" id="rVf-mX-g4V"/>
                         <outlet property="instagramHandle" destination="TlH-A9-ypF" id="QDX-li-7no"/>
                         <outlet property="instagramHeightConstraint" destination="nV3-fw-tZG" id="VeH-J1-6eH"/>
                         <outlet property="instagramLabel" destination="uLv-MN-eCU" id="UHe-4P-TGG"/>
@@ -1490,12 +1516,14 @@ Cg
                         <outlet property="musicHeightConstraint" destination="nXI-V0-wo5" id="YUC-4D-NAC"/>
                         <outlet property="resultDescription" destination="2BT-j2-MM2" id="v9r-Dw-WBL"/>
                         <outlet property="resultImageView" destination="p2f-3G-lU1" id="H6H-2x-KVI"/>
+                        <outlet property="resultTitle" destination="t66-9l-e3c" id="G30-nU-Cft"/>
                         <outlet property="scrollView" destination="UQC-n1-xig" id="tdl-qw-NMO"/>
                         <outlet property="shadowView" destination="xeV-xA-Dmi" id="5fj-n7-DLj"/>
                         <outlet property="shadowViewTopConstraint" destination="hZy-WM-gZ3" id="fBH-Rj-KpQ"/>
                         <outlet property="songLabel" destination="QO5-Lu-Haf" id="8AR-dP-wNN"/>
                         <outlet property="spotify" destination="q1K-Dv-bWC" id="S0a-0D-seO"/>
                         <outlet property="stackView" destination="N8O-bp-qhc" id="uyP-pY-gFU"/>
+                        <outlet property="topStackView" destination="yKe-9S-QIU" id="Za5-fr-uAg"/>
                         <segue destination="h9Y-Qx-5Yv" kind="show" identifier="SeeAllComments" id="VaK-A2-yjo"/>
                     </connections>
                 </viewController>

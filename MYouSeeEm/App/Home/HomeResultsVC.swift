@@ -13,8 +13,11 @@ import FirebaseUI
 import GoneVisible
 
 class HomeResultsVC: UIViewController {
+    @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var resultImageView: UIImageView!
+    @IBOutlet weak var resultTitle: UILabel!
     @IBOutlet weak var resultDescription: UITextView!
+    @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var instagramHandle: UILabel!
     @IBOutlet weak var instagramLabel: UILabel!
     @IBOutlet weak var instagramHeightConstraint: NSLayoutConstraint!
@@ -42,6 +45,7 @@ class HomeResultsVC: UIViewController {
     @IBOutlet weak var commentsView: UIView!
     @IBOutlet weak var musicHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var shadowViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var commentsConstraint: NSLayoutConstraint!
     
     var subcategoryDetail: SubcategoryModel?
     var artist: ArtistModel?
@@ -71,11 +75,18 @@ class HomeResultsVC: UIViewController {
         unsuscribeToKeyboardNotifications()
     }
     
+    func setNavLogo() {
+        let logo = UIImage(named: "MYouSeeEmLogo")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
     
     func prepare() {
+        setNavLogo()
         if isArtist {
             if let artist = artist {
-                self.title = "\(artist.name)"
+                resultTitle.text = "\(artist.name)"
                 let gender = isGender(gender: artist.gender)
                 artistProfileImage?.image = returnArtistImage(artist: artist.name)
                 artistDescription?.attributedText = addDescription(description: artist.description)
@@ -88,7 +99,7 @@ class HomeResultsVC: UIViewController {
         } else {
             if let subcategoryDetail = subcategoryDetail {
                 resultImageView.image = returnImage(category: subcategoryDetail.category, subcategory: subcategoryDetail.subcategory, photoId: subcategoryDetail.photoId)
-                self.title = subcategoryDetail.photoId
+                resultTitle.text = subcategoryDetail.photoId
                 resultDescription.attributedText = addDescription(description: subcategoryDetail.description)
                 resultDescription.isScrollEnabled = true
                 resultDescription.isEditable = false
@@ -104,6 +115,7 @@ class HomeResultsVC: UIViewController {
         if self.view.frame.width < 400 {
             shadowViewTopConstraint.constant = 50
         }
+        setImageZoom()
     }
     
     func downloadComments() {
@@ -152,11 +164,19 @@ class HomeResultsVC: UIViewController {
         }
     }
     
+    func setImageZoom() {
+        imageScrollView.minimumZoomScale = 1.0
+        imageScrollView.maximumZoomScale = 6.0
+    }
+    
     func hideArtistLabels() {
         songLabel.isHidden = !isArtist
         appleMusic.isHidden = !isArtist
         spotify.isHidden = !isArtist
         musicHeightConstraint.constant = 0
+        if artist?.additionalInfo == "" {
+            commentsConstraint.constant = 0
+        }
     }
     
     func hideEmptyValues() {
@@ -175,6 +195,9 @@ class HomeResultsVC: UIViewController {
         }
         if subcategoryDetail?.additionalInfo == "" {
             additionalInfoHeightConstraint.constant = 0
+        }
+        if subcategoryDetail?.date == "" && subcategoryDetail?.additionalInfo == "" {
+            commentsConstraint.constant = 0
         }
         if subcategoryDetail?.description == "" {
             stackView.removeArrangedSubview(resultDescription)
@@ -375,5 +398,15 @@ extension NSMutableAttributedString {
 
         self.append(NSAttributedString(string: value, attributes:attributes))
         return self
+    }
+}
+
+extension HomeResultsVC: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        if isArtist {
+            return artistProfileImage
+        } else {
+            return resultImageView
+        }
     }
 }
