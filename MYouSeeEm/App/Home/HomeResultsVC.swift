@@ -166,7 +166,7 @@ class HomeResultsVC: UIViewController {
     
     func setImageZoom() {
         imageScrollView.minimumZoomScale = 1.0
-        imageScrollView.maximumZoomScale = 6.0
+        imageScrollView.maximumZoomScale = 2.0
     }
     
     func hideArtistLabels() {
@@ -207,7 +207,7 @@ class HomeResultsVC: UIViewController {
     
     func addDescription(description: String) -> NSAttributedString {
         let attributedString = NSMutableAttributedString()
-            .bold("Description: ")
+            .bold("Artist Bio: ")
             .normal(description)
         return attributedString
     }

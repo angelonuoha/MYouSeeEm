@@ -256,7 +256,7 @@ extension HomeVC: MFMailComposeViewControllerDelegate {
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients(["MYouSeeEm@gmail.com"])
         mailComposerVC.setSubject("[SUPPORT] MYouSeeEm")
-        mailComposerVC.setMessageBody("Filler", isHTML: false)
+        mailComposerVC.setMessageBody("Tell us about your mYouSeeEm experience! Let us know any questions, suggestions, comments or concerns. We aim to provide the best possible experience for our visitors and your comments help us achieve that goal!", isHTML: false)
         return mailComposerVC
     }
 

@@ -200,10 +200,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0C-dl-ADZ">
-                                <rect key="frame" x="0.0" y="181.5" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="181.5" width="375" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="nZ1-yi-5fz">
-                                        <rect key="frame" x="0.0" y="1" width="375" height="298"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="198"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9g-9V-clO">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -230,7 +230,7 @@
                                                 <rect key="frame" x="0.0" y="50" width="375" height="48.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKX-Zo-CPO">
-                                                        <rect key="frame" x="20" y="8" width="335" height="33"/>
+                                                        <rect key="frame" x="20" y="7.5" width="335" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Events">
                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -268,53 +268,11 @@
                                                     <constraint firstItem="6Zz-8x-SEX" firstAttribute="centerY" secondItem="b6Z-0Q-yfO" secondAttribute="centerY" id="gWV-hb-idZ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YB2-y8-ndN">
-                                                <rect key="frame" x="0.0" y="149.5" width="375" height="49"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lC-cG-Hy5">
-                                                        <rect key="frame" x="20" y="8" width="335" height="33"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Apple Music Playlist">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="appleMusic:" destination="XM0-xQ-8By" eventType="touchUpInside" id="AKb-V0-vYz"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="8lC-cG-Hy5" firstAttribute="leading" secondItem="YB2-y8-ndN" secondAttribute="leading" constant="20" id="AMT-2H-FBA"/>
-                                                    <constraint firstItem="8lC-cG-Hy5" firstAttribute="centerY" secondItem="YB2-y8-ndN" secondAttribute="centerY" id="SIZ-7g-z2V"/>
-                                                    <constraint firstAttribute="trailing" secondItem="8lC-cG-Hy5" secondAttribute="trailing" constant="20" id="kL5-W5-hHt"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jd-lD-UXV">
-                                                <rect key="frame" x="0.0" y="199.5" width="375" height="48.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fr-qT-7ME">
-                                                        <rect key="frame" x="20" y="8" width="335" height="33"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Spotify Playlist">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="spotify:" destination="XM0-xQ-8By" eventType="touchUpInside" id="kdO-4S-jOe"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="4fr-qT-7ME" secondAttribute="trailing" constant="20" id="EwJ-gs-mmH"/>
-                                                    <constraint firstItem="4fr-qT-7ME" firstAttribute="centerY" secondItem="6jd-lD-UXV" secondAttribute="centerY" id="QGx-yl-8vY"/>
-                                                    <constraint firstItem="4fr-qT-7ME" firstAttribute="leading" secondItem="6jd-lD-UXV" secondAttribute="leading" constant="20" id="WLV-sD-6Or"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJW-bD-A9R">
-                                                <rect key="frame" x="0.0" y="249" width="375" height="49"/>
+                                                <rect key="frame" x="0.0" y="149.5" width="375" height="48.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACk-vb-Iha">
-                                                        <rect key="frame" x="20" y="8" width="335" height="33"/>
+                                                        <rect key="frame" x="20" y="7.5" width="335" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="Contact Us">
                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,7 +295,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.85040713030000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="38R-NN-5nW"/>
+                                    <constraint firstAttribute="height" constant="200" id="38R-NN-5nW"/>
                                     <constraint firstItem="nZ1-yi-5fz" firstAttribute="top" secondItem="F0C-dl-ADZ" secondAttribute="top" constant="1" id="GpZ-be-gqH"/>
                                     <constraint firstAttribute="bottom" secondItem="nZ1-yi-5fz" secondAttribute="bottom" constant="1" id="XHH-b2-d83"/>
                                     <constraint firstItem="nZ1-yi-5fz" firstAttribute="leading" secondItem="F0C-dl-ADZ" secondAttribute="leading" id="stf-UD-iuv"/>
@@ -721,7 +679,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWN-tQ-JO7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="-599.33035714285711"/>
+            <point key="canvasLocation" x="113" y="-665"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="jch-2g-pHJ">
@@ -1882,13 +1840,13 @@ Cg
     <resources>
         <image name="Apple Music" width="328" height="78"/>
         <image name="Comments" width="34" height="24"/>
-        <image name="MYouSeeEmFullLogo" width="571" height="166"/>
-        <image name="MYouSeeEmLogo" width="137" height="166"/>
+        <image name="MYouSeeEmFullLogo" width="599" height="166"/>
+        <image name="MYouSeeEmLogo" width="180" height="180"/>
         <image name="Spotify" width="400" height="400"/>
         <image name="menu" width="20" height="17"/>
         <image name="profile-default" width="160" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hv3-cP-bUu"/>
+        <segue reference="1mg-Vg-lRc"/>
     </inferredMetricsTieBreakers>
 </document>

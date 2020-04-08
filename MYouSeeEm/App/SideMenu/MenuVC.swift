@@ -86,17 +86,6 @@ class MenuVC: UIViewController {
         controller.delegate = self
         present(controller, animated: true, completion: nil)
     }
-    
-    @IBAction func appleMusic(_ sender: Any) {
-        if let url = URL(string: "https://music.apple.com/us/playlist/myouseeem-playlist/pl.u-e98lGdKI19okXp") {
-            UIApplication.shared.open(url)
-        }
-    }
-    @IBAction func spotify(_ sender: Any) {
-        if let url = URL(string: "https://open.spotify.com/playlist/04Rumhya7JTH1DqRxX856D") {
-            UIApplication.shared.open(url)
-        }
-    }
 
     
     @IBAction func contactUs(_ sender: Any) {
